@@ -31,7 +31,6 @@ public class SplashScreen extends Activity {
             }
         }, TIME_OUT);
     }
-//screwthis
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
