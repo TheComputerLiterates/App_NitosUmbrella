@@ -59,12 +59,54 @@ public class MainActivity extends Activity
     public void onSectionAttached(int number) {
         switch (number) {
             case 1:
-                mTitle = getString(R.string.title_section1);
+                mTitle = "Home";
                 break;
             case 2:
-                mTitle = getString(R.string.title_section2);
+                mTitle = "Games";
                 break;
             case 3:
+                mTitle = "Rules";
+                break;
+            case 4:
+                mTitle = "About Us";
+                break;
+            case 5:
+                mTitle = "View Profile";
+                break;
+            case 6:
+                mTitle = "Clarifications";
+                break;
+            case 7:
+                mTitle = "Updates";
+                break;
+            case 8:
+                mTitle = "Live Map";
+                break;
+            case 9:
+                mTitle = "Report Kill";
+                break;
+            case 10:
+                mTitle = "View Mission Info";
+                break;
+            case 11:
+                mTitle = "Enable/Disable GPS";
+                break;
+            case 12:
+                mTitle = "Manage Games";
+                break;
+            case 13:
+                mTitle = "Manage Missions";
+                break;
+            case 14:
+                mTitle = "GeoFences";
+                break;
+            case 15:
+                mTitle = "Users";
+                break;
+            case 16:
+                mTitle = "Moderator Chat";
+                break;
+            case 17:
                 mTitle = getString(R.string.title_section3);
                 break;
         }

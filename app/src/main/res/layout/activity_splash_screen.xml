@@ -14,7 +14,7 @@
         android:layout_width="170dp"
         android:layout_height="170dp"
         android:scaleType="fitXY"
-        android:src="@drawable/logo2"
+        android:src="@drawable/logo"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
