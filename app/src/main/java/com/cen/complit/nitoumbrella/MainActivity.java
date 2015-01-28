@@ -49,10 +49,68 @@ public class MainActivity extends Activity
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
+
+        Fragment objFragment = null;
+        //Switches fragments depending on what is selected in the nav drawer.
+        switch(position){
+            case 0:
+                objFragment = new menu1_Fragment();
+                break;
+            case 1:
+                objFragment = new games_Fragment();
+                break;
+            case 2:
+                objFragment = new rules_Fragment();
+                break;
+            case 3:
+                objFragment = new aboutUs_Fragment();
+                break;
+            case 4:
+                objFragment = new viewProfile_Fragment();
+                break;
+            case 5:
+                objFragment = new clarifications_Fragment();
+                break;
+            case 6:
+                objFragment = new updates_Fragment();
+                break;
+            case 7:
+                objFragment = new liveMap_Fragment();
+                break;
+            case 8:
+                objFragment = new reportKill_Fragment();
+                break;
+            case 9:
+                objFragment = new viewMission_Fragment();
+                break;
+            case 10:
+                objFragment = new enableGPS_Fragment();
+                break;
+            case 11:
+                objFragment = new manageGames_Fragment();
+                break;
+            case 12:
+                objFragment = new manageMissions_Fragment();
+                break;
+            case 13:
+                objFragment = new geofence_Fragment();
+                break;
+            case 14:
+                objFragment = new users_Fragment();
+                break;
+            case 15:
+                objFragment = new modChat_Fragment();
+                break;
+            case 16:
+                objFragment = new logout_Fragment();
+                break;
+
+
+        }
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
-                .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
+                .replace(R.id.container, objFragment)
                 .commit();
     }
 
