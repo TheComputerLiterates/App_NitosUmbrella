@@ -1,9 +1,10 @@
 <resources>
 
-    <color name="pale_blue">#ccffff</color> <!-- current splash background -->
+    <color name="pale_blue">#9cbebd</color> <!-- current splash background -->
     <color name="umbrella_red">#C1272D</color> <!-- red from logo -->
     <color name="black">#000000</color> <!-- used for logo -->
     <color name="white">#FFFFFF</color> <!-- used for logo -->
+    <color name="coffee">#2e2b21</color> <!-- coffee BG from PPT -->
 
 </resources>
 

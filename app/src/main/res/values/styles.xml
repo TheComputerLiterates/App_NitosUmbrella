@@ -10,8 +10,8 @@
     </style>
 
     <style name="SplashTheme" parent="android:Theme.Holo.Light.NoActionBar.Fullscreen">
-        <item name="android:windowBackground">@color/pale_blue</item>
-        <item name="android:colorBackground">@color/pale_blue</item>
+        <item name="android:windowBackground">@color/coffee</item>
+        <item name="android:colorBackground">@color/coffee</item>
     </style>
 
 </resources>
