@@ -12,5 +12,10 @@
     <string name="title_activity_splash_screen">SplashScreen</string>
     <string name="hello_world">Hello world!</string>
     <string name="powered_by">Powered by Nito\'s Umbrella</string>
+    <string name="aboutus">We are the Computer Literates. Everything we say is obviously truth. Obey Jared.
+        \n \n \n Also, what will go here will probably be pulled from the website.</string>
+    <string name="the_rules">1. OBEY JARED \n 2.Don\'t put yourself or any players in danger.
+        \n 3.Nerf Guns and Socks only. \n 4.OBEY JARED.</string>
+    <string name="games">This is where a list of past games will be viewable. \n \n Info will be pulled from website.</string>
 
 </resources>

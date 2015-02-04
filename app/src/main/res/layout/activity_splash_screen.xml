@@ -14,7 +14,7 @@
         android:layout_width="240dp"
         android:layout_height="240dp"
         android:scaleType="fitXY"
-        android:src="@drawable/logo_splash"
+        android:src="@drawable/logo"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
