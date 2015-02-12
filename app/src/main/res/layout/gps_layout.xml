@@ -20,6 +20,7 @@
         android:id="@+id/button2"
         android:layout_marginTop="125dp"
         android:layout_below="@+id/textView"
+        android:textColor="@color/white"
         android:layout_centerHorizontal="true"
         android:background="@color/umbrella_red" />
 
@@ -27,6 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Disable GPS"
+        android:textColor="@color/white"
         android:id="@+id/button3"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
