@@ -12,8 +12,11 @@
     <string name="title_activity_splash_screen">SplashScreen</string>
     <string name="hello_world">Hello world!</string>
     <string name="powered_by">Powered by Nito\'s Umbrella</string>
-    <string name="aboutus">We are the Computer Literates. Everything we say is obviously truth. Obey Jared.
-        \n \n \n Also, what will go here will probably be pulled from the website.</string>
+    <string name="about_hvz">Humans vs. Zombies is a game played around the world on college campuses, at libraries, and in other public settings.
+    It pits teams of humans against a team of zombies that grows as then humans are conquered. They must defend themselves with simple weapons
+    like nerf guns and socks, while the zombies are limited to a glorified game of tag. Over the course of a week, who will survive the outbreak?</string>
+    <string name="aboutus">Nito\'s Umbrella is a support system designed to bring minor elements of augmented reality to team based games in the real world.
+    The project began as an endeavor by four students at Florida State University.</string>
     <string name="the_rules">1. OBEY JARED \n 2.Don\'t put yourself or any players in danger.
         \n 3.Nerf Guns and Socks only. \n 4.OBEY JARED.</string>
     <string name="games">This is where a list of past games will be viewable. \n \n Info will be pulled from website.</string>
