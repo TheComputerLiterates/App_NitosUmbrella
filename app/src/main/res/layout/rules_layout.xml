@@ -1,19 +1,459 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+<RelativeLayout
+    android:layout_width="match_parent" android:layout_height="wrap_content"
     android:background="@color/coffee">
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/textView"
-        android:text="@string/the_rules"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
+        android:textSize="30dp"
+        android:text="Golden Rule"
+        android:layout_marginLeft="10dp"
+        android:textStyle="bold"
+        android:id="@+id/GoldenRule"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textColor="@color/white" />
+        android:textColor="@color/pale_blue" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/GoldenRule"
+        android:id="@+id/GoldRuleEx"
+        android:textColor="@color/white"
+        android:text="Don\'t be a douchebag!"
+        android:textSize="20dp"
+        android:layout_marginLeft="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/GoldRuleEx"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:textStyle="bold"
+        android:id="@+id/AoP"
+        android:textSize="30dp"
+        android:textColor="@color/pale_blue"
+        android:text="Area of Play"  />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/AoP"
+        android:id="@+id/SafeZone"
+        android:textColor="@color/pale_blue"
+        android:textSize="25dp"
+        android:textStyle="italic"
+        android:layout_marginLeft="15dp"
+        android:text="Safe Zones"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/SafeZone"
+        android:id="@+id/SafeZoneEx"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:text="@string/safe_zones"
+    />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/SafeZoneEx"
+        android:layout_marginLeft="15dp"
+        android:id="@+id/noplay"
+        android:textColor="@color/pale_blue"
+        android:textStyle="italic"
+        android:textSize="25dp"
+        android:text="No-Play Zones"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/noplay"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:id="@+id/noplayex"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:text="@string/no_play"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/noplayex"
+        android:id="@+id/cbounds"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:textSize="25dp"
+        android:textStyle="italic"
+        android:textColor="@color/pale_blue"
+        android:text="Campus Boundaries"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cbounds"
+        android:id="@+id/cboundsex"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:textSize="20dp"
+        android:textColor="@color/white"
+        android:text="@string/cbounds"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cboundsex"
+        android:id="@+id/HumanRules"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textSize="30dp"
+        android:textColor="@color/pale_blue"
+        android:textStyle="bold"
+        android:text="Human Rules"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/HumanRules"
+        android:id="@+id/HumanRulesEx"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:textSize="20dp"
+        android:textColor="@color/white"
+        android:text="@string/human_rules"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/HumanRulesEx"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/ZombieRules"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:textColor="@color/pale_blue"
+        android:text="Zombie Rules"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ZombieRules"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:id="@+id/ZombieRulesEx"
+        android:textSize="20dp"
+        android:textColor="@color/white"
+        android:text="@string/zombie_rules"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ZombieRulesEx"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/OriginalZombie"
+        android:textColor="@color/pale_blue"
+        android:textStyle="bold"
+        android:textSize="30dp"
+        android:text="Original Zombie"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/OriginalZombie"
+        android:id="@+id/OriginalZombieEx"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:text="@string/original_zombie"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/OriginalZombieEx"
+        android:id="@+id/SafetyRules"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:textSize="30dp"
+        android:textColor="@color/pale_blue"
+        android:textStyle="bold"
+        android:text="Safety Rules"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/SafetyRules"
+        android:id="@+id/SafetyRulesEx"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:text="@string/safety"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/SafetyRulesEx"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:id="@+id/Streets"
+        android:textColor="@color/pale_blue"
+        android:textStyle="italic"
+        android:textSize="25dp"
+        android:text="Streets"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Streets"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:id="@+id/StreetsEx"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:text="Streets are still in play, but play is heavily discouraged.\n\nDo not impede traffic (vehicular or pedestrian) and do not be a nuisance to non-players.(Remember Rule #1)\n"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/StreetsEx"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/Trees"
+        android:textColor="@color/pale_blue"
+        android:textSize="25dp"
+        android:textStyle="italic"
+        android:text="Trees"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Trees"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:id="@+id/TreesEx"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:text="@string/trees"
+
+
+        />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/TreesEx"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/pale_blue"
+        android:id="@+id/Vehicles"
+        android:textSize="25dp"
+        android:textStyle="italic"
+        android:text="Vehicles"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Vehicles"
+        android:id="@+id/VehiclesEx"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:text="@string/vehicles"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/VehiclesEx"
+        android:layout_marginTop="10dp"
+        android:id="@+id/Blowguns"
+        android:layout_marginLeft="15dp"
+        android:textColor="@color/pale_blue"
+        android:textSize="25dp"
+        android:textStyle="italic"
+        android:text="Blowguns"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Blowguns"
+        android:id="@+id/BlowgunsEx"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:text="@string/Blowguns"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/BlowgunsEx"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:id="@+id/ModBlasters"
+        android:textColor="@color/pale_blue"
+        android:textStyle="italic"
+        android:textSize="25dp"
+        android:text="Modified Dart Blasters"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ModBlasters"
+        android:id="@+id/ModBlastersEx"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:text="@string/ModBlasters"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ModBlastersEx"
+        android:id="@+id/ModDarts"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/pale_blue"
+        android:textSize="25dp"
+        android:textStyle="italic"
+        android:text="Modified Darts"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ModDarts"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:id="@+id/ModDartsEx"
+        android:textSize="20dp"
+        android:textColor="@color/white"
+        android:text="@string/ModDarts"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ModDartsEx"
+        android:id="@+id/ModSocks"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/pale_blue"
+        android:textStyle="italic"
+        android:textSize="25dp"
+        android:text="Modified Socks"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ModSocks"
+        android:id="@+id/ModSocksEx"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:textSize="20dp"
+        android:textColor="@color/white"
+        android:text="@string/ModSocks"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ModSocksEx"
+        android:id="@+id/MissionRules"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/pale_blue"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:text="Mission Rules"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/MissionRules"
+        android:id="@+id/MissionRulesEx"
+        android:layout_marginLeft="20dp"
+        android:textSize="20dp"
+        android:textColor="@color/white"
+        android:layout_marginRight="10dp"
+        android:text="@string/MissionRules"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/MissionRulesEx"
+        android:id="@+id/CardSystem"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/pale_blue"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:text="Card System"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/CardSystem"
+        android:id="@+id/CardSystemEx"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:textSize="20dp"
+        android:textColor="@color/white"
+        android:text="@string/CardSystem"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/CardSystemEx"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textColor="@color/pale_blue"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        android:id="@+id/finalRule"
+        android:text="@string/FinalRule"
+        />
+
 </RelativeLayout>
+    </ScrollView>
