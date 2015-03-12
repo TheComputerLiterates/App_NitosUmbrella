@@ -18,4 +18,5 @@ public class reportKill_Fragment extends Fragment{
         rootview = inflater.inflate(R.layout.reportkill_layout, container, false);
         return rootview;
     }
+
 }
