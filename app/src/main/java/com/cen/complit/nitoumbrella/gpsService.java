@@ -15,6 +15,9 @@ import android.location.Location;
 
 public class gpsService extends Service {
 
+    public LocationListener myLL;
+    public LocationManager myLM;
+
     public static final String
             ACTION_LOCATION_BROADCAST = gpsService.class.getName() + "LocationBroadcast",
             EXTRA_LATITUDE = "extra_latitude",
@@ -28,13 +31,38 @@ public class gpsService extends Service {
     public void onCreate() {
         super.onCreate();
         Log.e("Tag", "Into the OnCreate Service");
-        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        sendBroadcastMessage(locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER));
-        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, MIN_TIME, MIN_DISTANCE,
-                new LocationListener() {
+//        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+//        sendBroadcastMessage(locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER));
+//        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, MIN_TIME, MIN_DISTANCE,
+//                new LocationListener() {
+//                    @Override
+//                    public void onLocationChanged(Location location) {
+//                        sendBroadcastMessage(location);
+//                        Toast.makeText(getApplicationContext(), "Sending message", Toast.LENGTH_LONG).show();
+//                    }
+//
+//                    @Override
+//                    public void onStatusChanged(String provider, int status, Bundle extras) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onProviderEnabled(String provider) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onProviderDisabled(String provider) {
+//
+//                    }
+//                }
+//        );
+
+        myLL = new LocationListener() {
                     @Override
                     public void onLocationChanged(Location location) {
                         sendBroadcastMessage(location);
+                        Toast.makeText(getApplicationContext(), "Sending message", Toast.LENGTH_LONG).show();
                     }
 
                     @Override
@@ -51,8 +79,10 @@ public class gpsService extends Service {
                     public void onProviderDisabled(String provider) {
 
                     }
-                }
-        );
+                };
+        myLM = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+        sendBroadcastMessage(myLM.getLastKnownLocation(LocationManager.NETWORK_PROVIDER));
+        myLM.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, MIN_TIME, MIN_DISTANCE, myLL);
     }
 
     private void sendBroadcastMessage(Location location) {
@@ -74,5 +104,6 @@ public class gpsService extends Service {
     public void onDestroy(){
         super.onDestroy();
         Toast.makeText(getApplicationContext(), "Service Ended", Toast.LENGTH_LONG).show();
+        myLM.removeUpdates(myLL);
     }
 }
