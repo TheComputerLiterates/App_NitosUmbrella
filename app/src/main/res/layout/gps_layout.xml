@@ -30,7 +30,6 @@
     <TextView
         android:layout_width="200dp"
         android:layout_height="50dp"
-        android:text="Awaiting GPS"
         android:textSize="15dp"
         android:textColor="@color/white"
         android:id="@+id/locationView"

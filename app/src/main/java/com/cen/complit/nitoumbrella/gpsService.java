@@ -30,39 +30,12 @@ public class gpsService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.e("Tag", "Into the OnCreate Service");
-//        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-//        sendBroadcastMessage(locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER));
-//        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, MIN_TIME, MIN_DISTANCE,
-//                new LocationListener() {
-//                    @Override
-//                    public void onLocationChanged(Location location) {
-//                        sendBroadcastMessage(location);
-//                        Toast.makeText(getApplicationContext(), "Sending message", Toast.LENGTH_LONG).show();
-//                    }
-//
-//                    @Override
-//                    public void onStatusChanged(String provider, int status, Bundle extras) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onProviderEnabled(String provider) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onProviderDisabled(String provider) {
-//
-//                    }
-//                }
-//        );
+        Toast.makeText(getApplicationContext(), "GPS Service Started", Toast.LENGTH_LONG).show();
 
         myLL = new LocationListener() {
                     @Override
                     public void onLocationChanged(Location location) {
                         sendBroadcastMessage(location);
-                        Toast.makeText(getApplicationContext(), "Sending message", Toast.LENGTH_LONG).show();
                     }
 
                     @Override
@@ -103,7 +76,7 @@ public class gpsService extends Service {
     @Override
     public void onDestroy(){
         super.onDestroy();
-        Toast.makeText(getApplicationContext(), "Service Ended", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "GPS Service Ended", Toast.LENGTH_LONG).show();
         myLM.removeUpdates(myLL);
     }
 }

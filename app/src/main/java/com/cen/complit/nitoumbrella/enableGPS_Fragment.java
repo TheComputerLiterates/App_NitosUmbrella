@@ -22,22 +22,27 @@ import org.apache.http.conn.ConnectTimeoutException;
  * Created by Andrew on 1/28/2015.
  */
 public class enableGPS_Fragment extends Fragment{
+    static boolean gps_state = false;
+    static String myText = "";
     View rootview;
-    int gps_state;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         rootview = inflater.inflate(R.layout.gps_layout, container, false);
         final TextView textView = (TextView) rootview.findViewById(R.id.locationView);
 
-//        final Intent goGPS = new Intent(getActivity(), gpsService.class);
-//
+        if (!gps_state)
+        {
+            myText = "Awaiting GPS";
+        }
+        textView.setText(myText);
+
         final Button gps_on = (Button) rootview.findViewById(R.id.on_button);
         gps_on.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Toast.makeText(getActivity().getApplicationContext(), "GPS Enabled", Toast.LENGTH_LONG).show();
                 getActivity().startService(new Intent(getActivity(), gpsService.class));
+                gps_state = true;
             }
         });
 
@@ -46,8 +51,9 @@ public class enableGPS_Fragment extends Fragment{
             @Override
             public void onClick(View view) {
                 getActivity().stopService(new Intent(getActivity(), gpsService.class));
-                textView.setText("Awaiting GPS");
-               // Toast.makeText(getActivity().getApplicationContext(), "GPS Disabled", Toast.LENGTH_LONG).show();
+                myText = "Awaiting GPS";
+                textView.setText(myText);
+                gps_state = false;
             }
         });
 
@@ -58,22 +64,13 @@ public class enableGPS_Fragment extends Fragment{
                     public void onReceive(Context context, Intent intent) {
                         double latitude = intent.getDoubleExtra(gpsService.EXTRA_LATITUDE, 0);
                         double longitude = intent.getDoubleExtra(gpsService.EXTRA_LONGITUDE, 0);
-                        textView.setText("Lat: " + latitude + ", Lng: " + longitude);
+                        myText = "Lat: " + latitude + ", Lng: " + longitude;
+                        textView.setText(myText);
                     }
                 }, new IntentFilter(gpsService.ACTION_LOCATION_BROADCAST)
         );
         return rootview;
     }
-
-//    @Override
-//    public void onResume() {
-//        super.onResume();
-//    }
-//
-//    @Override
-//    public void onPause() {
-//        super.onStop();
-//    }
 }
 
 
