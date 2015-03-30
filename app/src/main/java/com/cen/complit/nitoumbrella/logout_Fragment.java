@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.io.File;
+
 /**
  * Created by Andrew on 1/28/2015.
  */
@@ -15,7 +17,12 @@ public class logout_Fragment extends Fragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        rootview = inflater.inflate(R.layout.logout_layout, container, false);
+        String filename = "session";
+        File session = new File(getActivity().getFilesDir(), filename);
+        session.delete();
+
+        rootview = inflater.inflate(R.layout.activity_login, container, false);
         return rootview;
+
     }
 }

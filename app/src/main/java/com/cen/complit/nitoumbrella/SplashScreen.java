@@ -1,11 +1,18 @@
 package com.cen.complit.nitoumbrella;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 
 public class SplashScreen extends Activity {
@@ -23,9 +30,53 @@ public class SplashScreen extends Activity {
 
             @Override
             public void run() {
+                //if file exists and contains proper credentials, go to main
+                boolean myflag = false;
+                String myusername, mypassword, mylogin;
+                String logindata;
+                String filename = "session";
+                File myFile = new File(getApplicationContext().getFilesDir(), filename);
+                if (myFile.exists()) {
+                    FileInputStream inputStream;
+                    try {
+                        inputStream = openFileInput(filename);
+                        byte[] login_test = new byte[inputStream.available()];
+                        while (inputStream.read(login_test) != -1) {}
+                        logindata = new String(login_test);
+                        String[] separated = logindata.split(";");
+                        myusername = separated[0];
+                        mypassword = separated[1];
+
+                        if ((myusername.matches("Admin")) && (mypassword.matches("gravelord")))
+                        {
+                            myflag = true;
+                        }
+                        else {
+                            myflag = false;
+                        }
+
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                        Toast.makeText(getApplicationContext(), "FML", Toast.LENGTH_LONG).show();
+                    } catch (IOException e) {
+
+                    }
+
+
+                }
+                //else go to Login
+                if (myflag)
+                {
+                    Intent i = new Intent(SplashScreen.this, MainActivity.class);
+                    startActivity(i);
+                }
+                else
+                {
+                    Intent i = new Intent(SplashScreen.this, LoginActivity.class);
+                    startActivity(i);
+                }
                 //this launches main when timer runs out
-                Intent i = new Intent(SplashScreen.this, MainActivity.class);
-                startActivity(i);
+
 
                 finish();
             }
