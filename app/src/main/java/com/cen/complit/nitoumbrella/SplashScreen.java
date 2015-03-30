@@ -47,7 +47,7 @@ public class SplashScreen extends Activity {
                         myusername = separated[0];
                         mypassword = separated[1];
 
-                        if ((myusername.matches("Admin")) && (mypassword.matches("gravelord")))
+                        if ((myusername.matches("admin")) && (mypassword.matches("gravelord")))
                         {
                             myflag = true;
                         }

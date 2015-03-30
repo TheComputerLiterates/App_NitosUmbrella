@@ -53,7 +53,7 @@ public class LoginActivity extends Activity {
                 else {
                     tvUser.setText("");
                     tvPass.setText("");
-                    Toast.makeText(getApplicationContext(), "x" + mypassword + "x", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Invalid Username or Password", Toast.LENGTH_LONG).show();
                 }
             }
         });

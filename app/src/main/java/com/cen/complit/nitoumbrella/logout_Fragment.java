@@ -1,6 +1,7 @@
 package com.cen.complit.nitoumbrella;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -21,7 +22,9 @@ public class logout_Fragment extends Fragment{
         File session = new File(getActivity().getFilesDir(), filename);
         session.delete();
 
-        rootview = inflater.inflate(R.layout.activity_login, container, false);
+        Intent i = new Intent(getActivity(), LoginActivity.class);
+        startActivity(i);
+//        rootview = inflater.inflate(R.layout.activity_login, container, false);
         return rootview;
 
     }
