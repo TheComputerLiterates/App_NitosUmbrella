@@ -115,11 +115,12 @@ public class NavigationDrawerFragment extends Fragment {
                         "Report Kill",
                         "View Mission Info",
                         "Enable/Disable GPS",
-                        "Manage Games",
-                        "Manage Missions",
-                        "GeoFences",
-                        "Users",
-                        "Moderator Chat",
+                        "Mod Hub",
+//                        "Manage Games",
+//                        "Manage Missions",
+//                        "GeoFences",
+//                        "Users",
+//                        "Moderator Chat",
                         getString(R.string.title_section3),
                 }));
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);

@@ -31,7 +31,7 @@ public class SplashScreen extends Activity {
             @Override
             public void run() {
                 //if file exists and contains proper credentials, go to main
-                boolean myflag = false;
+                boolean myflag = false, isAdmin = false;
                 String myusername, mypassword, mylogin;
                 String logindata;
                 String filename = "session";
@@ -47,9 +47,11 @@ public class SplashScreen extends Activity {
                         myusername = separated[0];
                         mypassword = separated[1];
 
-                        if ((myusername.matches("admin")) && (mypassword.matches("gravelord")))
+                        if ((myusername.matches("admin") || myusername.matches("testuser")) &&
+                                (mypassword.matches("gravelord")))
                         {
                             myflag = true;
+                            isAdmin = myusername.matches("admin");
                         }
                         else {
                             myflag = false;
@@ -68,6 +70,7 @@ public class SplashScreen extends Activity {
                 if (myflag)
                 {
                     Intent i = new Intent(SplashScreen.this, MainActivity.class);
+                    i.putExtra("rank", isAdmin);
                     startActivity(i);
                 }
                 else

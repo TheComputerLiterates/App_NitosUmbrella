@@ -32,12 +32,15 @@ public class LoginActivity extends Activity {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Boolean isAdmin = false;
                 String filename = "session";
                 String myusername = tvUser.getText().toString();
                 String mypassword = tvPass.getText().toString();
                 FileOutputStream outputStream;
 
-                if ((myusername.matches("admin")) && (mypassword.matches("gravelord"))) {
+                if ((myusername.matches("admin") || myusername.matches("testuser")) &&
+                        (mypassword.matches("gravelord"))) {
+                    isAdmin = myusername.matches("admin");
                     String mylogin = myusername + ";" + mypassword;
                     try {
                         outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
@@ -48,6 +51,7 @@ public class LoginActivity extends Activity {
                     }
 
                     Intent leggo = new Intent(LoginActivity.this, MainActivity.class);
+                    leggo.putExtra("rank", isAdmin);
                     startActivity(leggo);
                 }
                 else {

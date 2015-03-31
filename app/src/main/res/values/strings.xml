@@ -37,4 +37,7 @@
     <string name="FinalRule">Moderators have final say in any dispute during gameplay. Moderators may change these rules at any time to improve gameplay.</string>
     <string name="title_activity_login">LoginActivity</string>
 
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

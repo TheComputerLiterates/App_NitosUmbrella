@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.MapFragment;
 
@@ -27,6 +28,8 @@ public class MainActivity extends Activity
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
      */
     private CharSequence mTitle;
+    public Boolean isAdmin = false;
+    Bundle myArgs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +39,14 @@ public class MainActivity extends Activity
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getFragmentManager().findFragmentById(R.id.navigation_drawer);
         mTitle = getTitle();
+        isAdmin = getIntent().getBooleanExtra("rank", false);
+        myArgs = new Bundle();
+        myArgs.putBoolean("modStatus", isAdmin);
 
+        if(isAdmin)
+            Toast.makeText(getApplicationContext(), "Welcome, Moderator", Toast.LENGTH_LONG).show();
+        else
+            Toast.makeText(getApplicationContext(), "Welcome, User", Toast.LENGTH_LONG).show();
         // Set up the drawer.
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
@@ -83,23 +93,30 @@ public class MainActivity extends Activity
                 objFragment = new enableGPS_Fragment();
                 break;
             case 11:
-                objFragment = new manageGames_Fragment();
+                objFragment = new modHub_Fragment();
+                objFragment.setArguments(myArgs);
                 break;
             case 12:
-                objFragment = new manageMissions_Fragment();
-                break;
-            case 13:
-                objFragment = new geofence_Fragment();
-                break;
-            case 14:
-                objFragment = new users_Fragment();
-                break;
-            case 15:
-                objFragment = new modChat_Fragment();
-                break;
-            case 16:
                 objFragment = new logout_Fragment();
                 break;
+//            case 11:
+//                objFragment = new manageGames_Fragment();
+//                break;
+//            case 12:
+//                objFragment = new manageMissions_Fragment();
+//                break;
+//            case 13:
+//                objFragment = new geofence_Fragment();
+//                break;
+//            case 14:
+//                objFragment = new users_Fragment();
+//                break;
+//            case 15:
+//                objFragment = new modChat_Fragment();
+//                break;
+//            case 16:
+//                objFragment = new logout_Fragment();
+//                break;
 
 
         }
@@ -146,23 +163,29 @@ public class MainActivity extends Activity
                 mTitle = "Enable/Disable GPS";
                 break;
             case 12:
-                mTitle = "Manage Games";
+                mTitle = "Mod Hub";
                 break;
             case 13:
-                mTitle = "Manage Missions";
-                break;
-            case 14:
-                mTitle = "GeoFences";
-                break;
-            case 15:
-                mTitle = "Users";
-                break;
-            case 16:
-                mTitle = "Moderator Chat";
-                break;
-            case 17:
                 mTitle = getString(R.string.title_section3);
                 break;
+//            case 12:
+//                mTitle = "Manage Games";
+//                break;
+//            case 13:
+//                mTitle = "Manage Missions";
+//                break;
+//            case 14:
+//                mTitle = "GeoFences";
+//                break;
+//            case 15:
+//                mTitle = "Users";
+//                break;
+//            case 16:
+//                mTitle = "Moderator Chat";
+//                break;
+//            case 17:
+//                mTitle = getString(R.string.title_section3);
+//                break;
         }
     }
 
