@@ -1,6 +1,7 @@
 package com.cen.complit.nitoumbrella;
 
 import android.app.Fragment;
+import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,6 +15,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -100,6 +102,13 @@ public class liveMap_Fragment extends Fragment{
         mymap.addMarker(new MarkerOptions()
                 .position(GAZ)
                 .title("Gazebo"));
+
+        mymap.addCircle(new CircleOptions()
+                .center(UNION)
+                .radius(20)
+                .fillColor(Color.BLACK)
+                .strokeColor(Color.RED)
+                        );
 
         MapsInitializer.initialize(this.getActivity());
 
