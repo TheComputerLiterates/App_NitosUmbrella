@@ -56,6 +56,8 @@ public class liveMap_Fragment extends Fragment{
         mymap = mapView.getMap();
 
         mymap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+
+        //callouts
         mymap.addMarker(new MarkerOptions()
                 .position(DODD)
                 .title("Dodd"));
@@ -103,18 +105,7 @@ public class liveMap_Fragment extends Fragment{
 
         mymap.setMyLocationEnabled(true);
 
-//        LatLng mylocation = LANDIS;
-//        LatLng mylocation2;
-//        if (mymap.getMyLocation() != null) {
-//            mylocation2 = new LatLng(mymap.getMyLocation().getLatitude(), mymap.getMyLocation().getLongitude());
-//        }
-//        else
-//        {
-//            mylocation2 = HTL;
-//        }
-//
-//        mylocation = mylocation2;
-        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(mylocation, 17);
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(LANDIS, 17);
         mymap.animateCamera(cameraUpdate);
         mymap.setOnMyLocationChangeListener(myLocationChangeListener);
 
@@ -126,8 +117,10 @@ public class liveMap_Fragment extends Fragment{
         public void onMyLocationChange(Location location) {
             LatLng loc = new LatLng(location.getLatitude(), location.getLongitude());
             if(mymap != null){
-                if (!centerInit)
-                    mymap.animateCamera(CameraUpdateFactory.newLatLngZoom(loc, 16.0f));
+                if (!centerInit) {
+                    mymap.animateCamera(CameraUpdateFactory.newLatLngZoom(loc, 17));
+                    centerInit = true;
+                }
                 else {
                     mylocation = loc;
                 }
