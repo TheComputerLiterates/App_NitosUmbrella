@@ -1,9 +1,7 @@
 package com.cen.complit.nitoumbrella;
 
-import android.app.Activity;
 import android.app.FragmentManager;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.annotation.Nullable;
@@ -14,8 +12,6 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
-
-import java.io.File;
 
 
 /**
@@ -56,21 +52,11 @@ public class modHub_Fragment extends Fragment implements View.OnClickListener{
                 if(isAdmin)
                 {
                     mySarc.setText("Are you leaving me?");
-//                    try {
-//                        wait(3000);
-//                    } catch (InterruptedException e) {
-//                        e.printStackTrace();
-//                    }
                     mySwitch.setChecked(true);
                     mySarc.setText("I won't let you give up.");
                 }
                 else
                 {
-//                    try {
-//                        wait(3000);
-//                    } catch (InterruptedException e) {
-//                        e.printStackTrace();
-//                    }
                     mySarc.setText("Nice try, but no");
                     mySwitch.setChecked(false);
                 }
