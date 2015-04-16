@@ -1,6 +1,7 @@
 package com.cen.complit.nitoumbrella;
 
 import android.app.Fragment;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -40,6 +41,8 @@ public class liveMap_Fragment extends Fragment{
 
     private MapView mapView;
     private GoogleMap mymap;
+    boolean centerInit;
+    LatLng mylocation;
 
 
     private View rootview;
@@ -47,7 +50,7 @@ public class liveMap_Fragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         rootview = inflater.inflate(R.layout.live_map_layout, container, false);
-
+        centerInit = false;
         mapView = (MapView) rootview.findViewById(R.id.map);
         mapView.onCreate(savedInstanceState);
         mymap = mapView.getMap();
@@ -98,11 +101,39 @@ public class liveMap_Fragment extends Fragment{
 
         MapsInitializer.initialize(this.getActivity());
 
-        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(LANDIS, 17);
-        mymap.animateCamera(cameraUpdate);
         mymap.setMyLocationEnabled(true);
+
+//        LatLng mylocation = LANDIS;
+//        LatLng mylocation2;
+//        if (mymap.getMyLocation() != null) {
+//            mylocation2 = new LatLng(mymap.getMyLocation().getLatitude(), mymap.getMyLocation().getLongitude());
+//        }
+//        else
+//        {
+//            mylocation2 = HTL;
+//        }
+//
+//        mylocation = mylocation2;
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(mylocation, 17);
+        mymap.animateCamera(cameraUpdate);
+        mymap.setOnMyLocationChangeListener(myLocationChangeListener);
+
         return rootview;
     }
+
+    private GoogleMap.OnMyLocationChangeListener myLocationChangeListener = new GoogleMap.OnMyLocationChangeListener() {
+        @Override
+        public void onMyLocationChange(Location location) {
+            LatLng loc = new LatLng(location.getLatitude(), location.getLongitude());
+            if(mymap != null){
+                if (!centerInit)
+                    mymap.animateCamera(CameraUpdateFactory.newLatLngZoom(loc, 16.0f));
+                else {
+                    mylocation = loc;
+                }
+            }
+        }
+    };
 
     @Override
     public void onResume(){
