@@ -38,6 +38,8 @@ public class liveMap_Fragment extends Fragment{
     static final LatLng SHORES = new LatLng(30.441287, -84.296277);
     static final LatLng INTEG = new LatLng(30.443850, -84.298045);
     static final LatLng UNION = new LatLng(30.444362, -84.297201);
+    static final LatLng UNION2 = new LatLng(30.444362, -84.297204);
+
     static final LatLng GAZ = new LatLng(30.439862, -84.294429);
 
 
@@ -104,11 +106,17 @@ public class liveMap_Fragment extends Fragment{
                 .title("Gazebo"));
 
         mymap.addCircle(new CircleOptions()
-                .center(UNION)
-                .radius(20)
-                .fillColor(Color.BLACK)
-                .strokeColor(Color.RED)
-                        );
+                        .center(UNION)
+                        .radius(20)
+                        .fillColor(0x40C1272D)
+                        .strokeColor(0x2e2b21)
+        );
+        mymap.addCircle(new CircleOptions()
+                        .center(UNION2)
+                        .radius(20)
+                        .fillColor(0x40C1272D)
+                        .strokeColor(0x2e2b21)
+        );
 
         MapsInitializer.initialize(this.getActivity());
 
