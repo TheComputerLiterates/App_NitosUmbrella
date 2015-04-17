@@ -44,18 +44,14 @@ public class SplashScreen extends Activity {
                         while (inputStream.read(login_test) != -1) {}
                         logindata = new String(login_test);
                         String[] separated = logindata.split(";");
-                        myusername = separated[0];
-                        mypassword = separated[1];
+                        //myusername = separated[0];
+                        //mypassword = separated[1];
 
-                        if ((myusername.matches("admin") || myusername.matches("testuser")) &&
-                                (mypassword.matches("gravelord")))
-                        {
-                            myflag = true;
-                            isAdmin = myusername.matches("admin");
-                        }
-                        else {
-                            myflag = false;
-                        }
+
+
+                        isAdmin = true;
+
+
 
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
@@ -67,7 +63,7 @@ public class SplashScreen extends Activity {
 
                 }
                 //else go to Login
-                if (myflag)
+                if (isAdmin)
                 {
                     Intent i = new Intent(SplashScreen.this, MainActivity.class);
                     i.putExtra("rank", isAdmin);

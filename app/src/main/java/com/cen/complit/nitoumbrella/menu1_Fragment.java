@@ -31,7 +31,8 @@ public class menu1_Fragment extends Fragment{
     View rootview;
 
     // url to make request
-    private static String url = "http://api.androidhive.info/contacts/";
+    //testurl  private static String url = "http://api.androidhive.info/contacts/";
+    private static String url = "http://fsuhvz.com/api/APIKEY/viewprofile/";
     private static String TAG_CONTACTS = "contacts";
     private static String TAG_NAME = "name";
 
@@ -48,7 +49,7 @@ public class menu1_Fragment extends Fragment{
         return rootview;
     }
 
-    /*
+
     private class GetContacts extends AsyncTask<Void, Void, Void> {
         @Override
         protected Void doInBackground(Void... arg0) {
@@ -86,8 +87,12 @@ public class menu1_Fragment extends Fragment{
             super.onPostExecute(result);
             TextView tv = (TextView)rootview.findViewById(R.id.textView);
             //Update stuff
-            tv.setText(name);
+            if(name.equals("")) {
+                tv.setText("API DONE MESSED UP");
+            }
+            else
+                tv.setText("Logged in as: " + name);
         }
 
-    }*/
+    }
 }
