@@ -92,9 +92,10 @@ public class LoginActivity extends Activity {
             try {
                 JSONObject jsonObject = new JSONObject(jsonStr);
                 status = jsonObject.getBoolean(TAG_SUCCESS);
-                JSONObject dataBody = jsonObject.getJSONObject(TAG_BODY);
-                userId = dataBody.getString(TAG_USERID);
-
+                if(status) {
+                    JSONObject dataBody = jsonObject.getJSONObject(TAG_BODY);
+                    userId = dataBody.getString(TAG_USERID);
+                }
 
             } catch (JSONException e) {
                 e.printStackTrace();

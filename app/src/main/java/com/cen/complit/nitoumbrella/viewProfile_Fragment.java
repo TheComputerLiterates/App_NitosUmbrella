@@ -38,7 +38,7 @@ public class viewProfile_Fragment extends Fragment{
     private static String TAG_EMAIL = "email";
     private static String TAG_HVZID = "HVZID";
     private static String TAG_ROLE = "roleName";
-    private boolean status = false;
+    private boolean status;
     private String name,
     id,
     hvzid,
@@ -86,7 +86,7 @@ public class viewProfile_Fragment extends Fragment{
             List<NameValuePair> params = new ArrayList<NameValuePair>();
             //create service handler
 
-            params.add(new BasicNameValuePair("id", id));
+            params.add(new BasicNameValuePair("userId", id));
 
             ServiceHandler sh = new ServiceHandler();
 

@@ -87,7 +87,7 @@ public class menu1_Fragment extends Fragment{
             List<NameValuePair> params = new ArrayList<NameValuePair>();
             //create service handler
 
-            params.add(new BasicNameValuePair("id", id));
+            params.add(new BasicNameValuePair("userId", id));
 
             ServiceHandler sh = new ServiceHandler();
 
