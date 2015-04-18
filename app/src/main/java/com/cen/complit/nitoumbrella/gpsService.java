@@ -29,7 +29,7 @@ public class gpsService extends Service {
 
     public LocationListener myLL;
     public LocationManager myLM;
-    private static Timer timer = new Timer();
+    private static Timer timer;
 
 
     public static final String
@@ -50,7 +50,7 @@ public class gpsService extends Service {
     public void onCreate() {
         super.onCreate();
         Toast.makeText(getApplicationContext(), "GPS Service Started", Toast.LENGTH_LONG).show();
-
+        timer = new Timer();
 
 
         myLL = new LocationListener() {
