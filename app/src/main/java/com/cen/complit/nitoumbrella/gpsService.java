@@ -22,11 +22,15 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class gpsService extends Service {
 
     public LocationListener myLL;
     public LocationManager myLM;
+    private static Timer timer = new Timer();
+
 
     public static final String
             ACTION_LOCATION_BROADCAST = gpsService.class.getName() + "LocationBroadcast",
@@ -95,6 +99,14 @@ public class gpsService extends Service {
         return null;
     }
 
+    private class myTimer extends TimerTask
+    {
+        public void run()
+        {
+            new SendGPS().execute();
+        }
+    }
+
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -107,6 +119,8 @@ public class gpsService extends Service {
         super.onStartCommand(intent, flags, startID);
 
         myID = intent.getStringExtra("myid");
+
+        timer.scheduleAtFixedRate(new myTimer(), 0, 5000);
 
         return START_REDELIVER_INTENT;
     }
@@ -127,6 +141,7 @@ public class gpsService extends Service {
 
 
             String jsonStr = sh.makeServiceCall(url, ServiceHandler.POST, params);
+            Log.d("TAG", "GPS sent...");
 
             Log.d("DATA", jsonStr);
 
