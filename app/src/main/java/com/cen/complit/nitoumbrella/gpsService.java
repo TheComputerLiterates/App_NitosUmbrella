@@ -112,6 +112,7 @@ public class gpsService extends Service {
         super.onDestroy();
         Toast.makeText(getApplicationContext(), "GPS Service Ended", Toast.LENGTH_LONG).show();
         myLM.removeUpdates(myLL);
+        timer.cancel();
     }
 
     @Override
