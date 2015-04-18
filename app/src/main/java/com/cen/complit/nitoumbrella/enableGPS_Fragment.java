@@ -17,6 +17,11 @@ import android.widget.Toast;
 
 import org.apache.http.conn.ConnectTimeoutException;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 
 /**
  * Created by Andrew on 1/28/2015.
@@ -31,6 +36,32 @@ public class enableGPS_Fragment extends Fragment{
         rootview = inflater.inflate(R.layout.gps_layout, container, false);
         final TextView textView = (TextView) rootview.findViewById(R.id.locationView);
 
+        String logindata;
+        String parseID = "";
+        final String argID;
+
+        String filename = "session";
+        File myFile = new File(getActivity().getFilesDir(), filename);
+        if (myFile.exists()) {
+            FileInputStream inputStream;
+            try {
+                inputStream = getActivity().openFileInput(filename);
+                byte[] login_test = new byte[inputStream.available()];
+                while (inputStream.read(login_test) != -1) {
+                }
+                logindata = new String(login_test);
+                String[] separated = logindata.split(";");
+                parseID = separated[2];
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        argID = parseID;
+
         if (!gps_state)
         {
             myText = "Awaiting GPS";
@@ -41,7 +72,9 @@ public class enableGPS_Fragment extends Fragment{
         gps_on.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().startService(new Intent(getActivity(), gpsService.class));
+                Intent i = new Intent(getActivity(), gpsService.class);
+                i.putExtra("myid", argID);
+                getActivity().startService(i);
                 gps_state = true;
             }
         });

@@ -126,6 +126,7 @@ public class liveMap_Fragment extends Fragment{
         mymap.animateCamera(cameraUpdate);
         mymap.setOnMyLocationChangeListener(myLocationChangeListener);
 
+
         return rootview;
     }
 
