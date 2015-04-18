@@ -38,7 +38,7 @@ public class viewProfile_Fragment extends Fragment{
     private static String TAG_EMAIL = "email";
     private static String TAG_HVZID = "HVZID";
     private static String TAG_ROLE = "roleName";
-    private boolean status;
+    private boolean status = false;
     private String name,
     id,
     hvzid,

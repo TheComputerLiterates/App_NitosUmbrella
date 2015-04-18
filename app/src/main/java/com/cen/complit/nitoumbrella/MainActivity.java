@@ -133,7 +133,7 @@ public class MainActivity extends Activity
                 mTitle = "Home";
                 break;
             case 2:
-                mTitle = "Games";
+                mTitle = "Game";
                 break;
             case 3:
                 mTitle = "Rules";

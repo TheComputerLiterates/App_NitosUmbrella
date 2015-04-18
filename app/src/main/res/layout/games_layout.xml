@@ -6,14 +6,71 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/games"
+        android:id="@+id/title"
+        android:layout_marginTop="10dp"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:textColor="@color/pale_blue"
+        android:text="Loading..."
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/staticStart"
+        android:layout_below="@+id/title"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:textSize="20dp"
+        android:textColor="@color/pale_blue"
+        android:text="Start Date: "
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editStart"
+        android:layout_toRightOf="@+id/staticStart"
+        android:layout_alignBottom="@+id/staticStart"
+        android:textColor="@color/pale_blue"
+        android:textSize="20dp"
+        android:text="Loading..."
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/staticEnd"
+        android:layout_below="@+id/staticStart"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:textSize="20dp"
+        android:textColor="@color/pale_blue"
+        android:text="End Date: "
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/staticEnd"
+        android:layout_alignBottom="@+id/staticEnd"
+        android:id="@+id/editEnd"
+        android:textSize="20dp"
+        android:textColor="@color/pale_blue"
+        android:text="Loading..."
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:layout_below="@+id/staticEnd"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="10dp"
+        android:text="Loading..."
         android:id="@+id/textView"
-        android:layout_alignParentTop="true"
         android:textColor="@color/white"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+         />
 </RelativeLayout>
