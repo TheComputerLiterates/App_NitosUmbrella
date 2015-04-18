@@ -38,15 +38,12 @@ public class LoginActivity extends Activity {
 
     private static String TAG_SUCCESS = "success";
     private static String TAG_BODY = "body";
-    private static String TAG_RETURNDATA = "returnData";
-    private static String TAG_RAWR = "rawr";
-    private static String TAG_ARR = "arr";
-    private static String TAG_OBJ = "obj";
-    private static String TAG_NAME = "name";
-    private static String TAG_CHICKEN = "chicken";
+    private static String TAG_USERID = "userId";
+
     private boolean status;
     private String myusername;
     private String mypassword;
+    private String userId;
     public String url = "http://hvz.sabaduy.com/api/" + ServiceHandler.APIKEY + "/login";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,27 +59,6 @@ public class LoginActivity extends Activity {
 
                     new Test().execute();
 
-                /*if ((myusername.matches("admin") || myusername.matches("testuser")) &&
-                        (mypassword.matches("gravelord"))) {
-                    isAdmin = myusername.matches("admin");
-                    String mylogin = myusername + ";" + mypassword;
-                    try {
-                        outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
-                        outputStream.write(mylogin.getBytes());
-                        outputStream.close();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-
-                    Intent leggo = new Intent(LoginActivity.this, MainActivity.class);
-                    leggo.putExtra("rank", isAdmin);
-                    startActivity(leggo);
-                }
-                else {
-                    tvUser.setText("");
-                    tvPass.setText("");
-                    Toast.makeText(getApplicationContext(), "Invalid Username or Password", Toast.LENGTH_LONG).show();
-                }*/
             }
         });
     }
@@ -116,6 +92,9 @@ public class LoginActivity extends Activity {
             try {
                 JSONObject jsonObject = new JSONObject(jsonStr);
                 status = jsonObject.getBoolean(TAG_SUCCESS);
+                JSONObject dataBody = jsonObject.getJSONObject(TAG_BODY);
+                userId = dataBody.getString(TAG_USERID);
+
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -133,7 +112,7 @@ public class LoginActivity extends Activity {
             if(status) {
                 String filename = "session";
 
-                String mylogin = myusername + ";" + mypassword;
+                String mylogin = myusername + ";" + mypassword + ";" + userId;
 
                 try {
                     outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
