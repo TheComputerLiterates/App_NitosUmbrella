@@ -2,6 +2,7 @@ package com.cen.complit.nitoumbrella;
 
 import android.app.ActionBar;
 import android.app.Fragment;
+import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 
@@ -28,6 +30,8 @@ public class geofence_Fragment extends Fragment {
     private MapView mapView;
     private GoogleMap mymap;
     EditText myRad;
+    Button gSub;
+    Double rad, argLat, argLong;
 
     private View rootview;
     @Nullable
@@ -37,7 +41,13 @@ public class geofence_Fragment extends Fragment {
         final LatLng LANDIS = new LatLng(30.440910, -84.294993);
         myRad = new EditText(getActivity());
         myRad.setHint("Radius");
+        gSub = new Button(getActivity());
+        gSub.setText("Add!");
 
+        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        lp.addRule(RelativeLayout.CENTER_HORIZONTAL);
+        lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+        getActivity().addContentView(gSub, lp);
         getActivity().addContentView(myRad, new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
         mapView = (MapView) rootview.findViewById(R.id.map);
@@ -53,9 +63,10 @@ public class geofence_Fragment extends Fragment {
             @Override
             public void onMapClick(LatLng point) {
                 mymap.clear();
-                Double rad = 0.0;
+                rad = 0.0;
                 rad = Double.parseDouble(myRad.getText().toString());
-
+                argLat = point.latitude;
+                argLong = point.longitude;
                 if (rad != 0.0) {
                     mymap.addCircle(new CircleOptions()
                                     .center(point)
@@ -64,6 +75,16 @@ public class geofence_Fragment extends Fragment {
                                     .strokeColor(0x2e2b21)
                     );
                 }
+            }
+        });
+
+        gSub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent newFence = new Intent(getActivity(), geoCircle.class);
+                newFence.putExtra("radius", rad);
+                newFence.putExtra("lat", argLat);
+                newFence.putExtra("long", argLong);
             }
         });
 
