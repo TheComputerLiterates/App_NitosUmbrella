@@ -90,7 +90,7 @@ public class games_Fragment extends Fragment{
 
             //Make request to url
             String jsonStr = sh.makeServiceCall(url, ServiceHandler.POST, params);
-            Log.d("GAME", jsonStr);
+            //Log.d("GAME", jsonStr);
 
             if(jsonStr != null){
                 try {
@@ -146,7 +146,7 @@ public class games_Fragment extends Fragment{
 
             //Make request to url
             String jsonStr = sh.makeServiceCall(purl, ServiceHandler.POST, params);
-            Log.d("PROFILE", jsonStr);
+            //Log.d("PROFILE", jsonStr);
             if (jsonStr != null) {
                 try {
                     JSONObject jsonObject = new JSONObject(jsonStr);

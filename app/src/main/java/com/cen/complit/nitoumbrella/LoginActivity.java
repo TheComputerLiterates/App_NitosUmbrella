@@ -87,7 +87,7 @@ public class LoginActivity extends Activity {
 
             String jsonStr = sh.makeServiceCall(url, ServiceHandler.POST, params);
 
-            Log.d("DATA", jsonStr);
+            //Log.d("DATA", jsonStr);
 
             try {
                 JSONObject jsonObject = new JSONObject(jsonStr);
