@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -50,7 +51,7 @@ public class clarifications_Fragment extends Fragment{
             logindata;
 
     private JSONArray clarificatons;
-    private ArrayList<HashMap<String, String>> clarList = new ArrayList<HashMap<String, String>>();;
+    private ArrayList<HashMap<String, String>> clarList = new ArrayList<HashMap<String, String>>();
 
     View rootview;
     @Nullable
@@ -195,6 +196,12 @@ public class clarifications_Fragment extends Fragment{
                     R.layout.list_view, new String[] { TAG_SUBJECT, TAG_USERNAME}, new int[] { R.id.firstLine, R.id.secondLine});
 
             listview.setAdapter(adapter);
+            listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                }
+            });
 
 
         }

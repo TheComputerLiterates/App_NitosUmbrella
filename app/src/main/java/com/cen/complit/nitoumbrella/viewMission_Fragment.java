@@ -1,6 +1,9 @@
 package com.cen.complit.nitoumbrella;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.app.ListFragment;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -9,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -49,7 +53,8 @@ public class viewMission_Fragment extends Fragment {
     private boolean status;
 
     private JSONArray missions;
-    private ArrayList<HashMap<String, String>> missionsList = new ArrayList<HashMap<String, String>>();;
+    private ArrayList<HashMap<String, String>> missionsList = new ArrayList<HashMap<String, String>>();
+    private ArrayList<String> descriptions = new ArrayList<String>();
 
     private String id,
             roleId,
@@ -60,6 +65,8 @@ public class viewMission_Fragment extends Fragment {
             logindata;
 
     View rootview;
+
+
 
     @Nullable
     @Override
@@ -142,7 +149,9 @@ public class viewMission_Fragment extends Fragment {
                         mission.put(TAG_TITLE, data.getString(TAG_TITLE));
                         mission.put(TAG_END, "Ends " + data.getString(TAG_END));
 
+                        descriptions.add(data.getString(TAG_DESCRIPTION));
                         missionsList.add(mission);
+
 
                     }catch(JSONException e){
                         e.printStackTrace();
@@ -161,6 +170,21 @@ public class viewMission_Fragment extends Fragment {
                     R.layout.list_view, new String[] { TAG_TITLE, TAG_END}, new int[] { R.id.firstLine, R.id.secondLine});
 
             listview.setAdapter(adapter);
+
+            listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                    Bundle bundle = new Bundle();
+                    bundle.putString("description", descriptions.get(i));
+                    FragmentManager fm = getFragmentManager();
+                    Fragment frag = new mission_description();
+                    frag.setArguments(bundle);
+                    fm.beginTransaction().replace(R.id.container, frag).commit();
+
+
+                }
+            });
 
 
         }

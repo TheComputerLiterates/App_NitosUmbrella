@@ -17,7 +17,7 @@ import com.google.android.gms.maps.MapFragment;
 
 
 public class MainActivity extends Activity
-        implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+        implements NavigationDrawerFragment.NavigationDrawerCallbacks{
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -261,5 +261,7 @@ public class MainActivity extends Activity
                     getArguments().getInt(ARG_SECTION_NUMBER));
         }
     }
+
+
 
 }
