@@ -43,20 +43,22 @@ public class geofence_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         rootview = inflater.inflate(R.layout.geofence_layout, container, false);
         final LatLng LANDIS = new LatLng(30.440910, -84.294993);
-        myRad = new EditText(getActivity());
+        myRad = (EditText) rootview.findViewById(R.id.radText);
         myRad.setHint("Radius");
-        gSub = new Button(getActivity());
+        gSub = (Button) rootview.findViewById(R.id.addCircle);
         gSub.setText("Add!");
+        gSub.setBackgroundColor(getActivity().getResources().getColor(R.color.umbrella_red));
         myFrag = null;
         mycircle = new Bundle();
         argLat = 0.0;
         argLong = 0.0;
 
-        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        lp.addRule(RelativeLayout.CENTER_HORIZONTAL);
-        lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-        getActivity().addContentView(gSub, lp);
-        getActivity().addContentView(myRad, new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+//        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+//        lp.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
+//        lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
+//        gSub.setLayoutParams(lp);
+//        getActivity().addContentView(gSub, lp);
+//        getActivity().addContentView(myRad, new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
         mapView = (MapView) rootview.findViewById(R.id.map);
         mapView.onCreate(savedInstanceState);
