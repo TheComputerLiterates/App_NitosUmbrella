@@ -49,6 +49,7 @@ public class clarifications_Fragment extends Fragment{
     private static String TAG_DESCRIPTION = "description";
     private static String TAG_REPLIES = "replies";
     private static String TAG_CLOSED = "closed";
+    private static String TAG_CRID = "crId";
     private boolean status = false;
     private String id,
             role,
@@ -59,6 +60,7 @@ public class clarifications_Fragment extends Fragment{
     private ArrayList<String> descriptions = new ArrayList<String>();
     private ArrayList<String> replies = new ArrayList<String>();
     private ArrayList<String> open = new ArrayList<String>();
+    private ArrayList<String> cid = new ArrayList<String>();
 
     View rootview;
     @Nullable
@@ -188,6 +190,7 @@ public class clarifications_Fragment extends Fragment{
                         descriptions.add(data.getString(TAG_DESCRIPTION));
                         replies.add(data.getString(TAG_REPLIES));
                         open.add(data.getString(TAG_CLOSED));
+                        cid.add(data.getString(TAG_CRID));
                         clarList.add(clar);
 
                     }catch(JSONException e){
@@ -214,6 +217,7 @@ public class clarifications_Fragment extends Fragment{
                     bundle.putString("description", descriptions.get(i));
                     bundle.putString("replies", replies.get(i));
                     bundle.putString("closed", open.get(i));
+                    bundle.putString("crId", cid.get(i));
                     FragmentManager fm = getFragmentManager();
                     Fragment frag = new clarifications_description();
                     frag.setArguments(bundle);
