@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -45,9 +46,11 @@ import java.util.List;
 /**
  * Created by Andrew on 1/28/2015.
  */
-public class geoCircle extends Fragment{
+public class geoCircle extends  Fragment {
     Double myLat, myLong, radius;
     View rootview;
+
+    private Boolean affHuman, affZombie, affOZ;
 
     private String TAG_TITLE = "title";
     private String TAG_END = "endDate";
@@ -84,6 +87,10 @@ public class geoCircle extends Fragment{
         myLong = this.getArguments().getDouble("long");
         myList = new ArrayList<String>();
 
+        affHuman = false;
+        affOZ = false;
+        affZombie = false;
+
         gameText = (TextView) rootview.findViewById(R.id.gametext);
 
         Spinner colorSpinner = (Spinner) rootview.findViewById(R.id.colorSpin);
@@ -93,6 +100,52 @@ public class geoCircle extends Fragment{
         colorSpinner.setAdapter(adapter);
 
         mSpinner  = (Spinner) rootview.findViewById(R.id.missionSpin);
+
+        final CheckBox cbHuman = (CheckBox) rootview.findViewById(R.id.checkHumans);
+        final CheckBox cbOZ = (CheckBox) rootview.findViewById(R.id.checkOZ);
+        final CheckBox cbZombie = (CheckBox) rootview.findViewById(R.id.checkZombies);
+
+        cbHuman.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (cbHuman.isChecked()) {
+                    affHuman = false;
+                    cbHuman.setChecked(true);
+                }
+                else {
+                    cbHuman.setChecked(false);
+                    affHuman = true;
+                }
+            }
+        });
+
+        cbZombie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (cbZombie.isChecked()) {
+                    affZombie = false;
+                    cbZombie.setChecked(true);
+                }
+                else {
+                    cbZombie.setChecked(false);
+                    affZombie = true;
+                }
+            }
+        });
+
+        cbOZ.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (cbOZ.isChecked()) {
+                    affOZ = false;
+                    cbOZ.setChecked(true);
+                }
+                else {
+                    cbOZ.setChecked(false);
+                    affOZ = true;
+                }
+            }
+        });
 
         new GetGame().execute();
         return rootview;
