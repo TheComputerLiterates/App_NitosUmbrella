@@ -27,7 +27,7 @@
         android:layout_marginTop="30dp"
         android:layout_centerHorizontal="true"
         android:background="@color/umbrella_red"
-        android:text="Return to Missions"
+        android:text="Return to Clarifications"
 
         />
 </RelativeLayout>

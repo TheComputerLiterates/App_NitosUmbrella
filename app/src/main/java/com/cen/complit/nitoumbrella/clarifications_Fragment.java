@@ -1,6 +1,7 @@
 package com.cen.complit.nitoumbrella;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -45,6 +46,7 @@ public class clarifications_Fragment extends Fragment{
     private static String TAG_CREQUESTS = "cRequests";
     private static String TAG_USERNAME = "userName";
     private static String TAG_SUBJECT = "subject";
+    private static String TAG_DESCRIPTION = "description";
     private boolean status = false;
     private String id,
             role,
@@ -52,6 +54,7 @@ public class clarifications_Fragment extends Fragment{
 
     private JSONArray clarificatons;
     private ArrayList<HashMap<String, String>> clarList = new ArrayList<HashMap<String, String>>();
+    private ArrayList<String> descriptions = new ArrayList<String>();
 
     View rootview;
     @Nullable
@@ -98,7 +101,7 @@ public class clarifications_Fragment extends Fragment{
 
             //Make request to url
             String jsonStr = sh.makeServiceCall(purl, ServiceHandler.POST, params);
-            Log.d("PROFILE", jsonStr);
+            //Log.d("PROFILE", jsonStr);
             if (jsonStr != null) {
                 try {
                     JSONObject jsonObject = new JSONObject(jsonStr);
@@ -137,7 +140,7 @@ public class clarifications_Fragment extends Fragment{
 
             //Make request to url
             String jsonStr = sh.makeServiceCall(url, ServiceHandler.POST, params);
-            Log.d("CLARIFICATIONS", jsonStr);
+            //Log.d("CLARIFICATIONS", jsonStr);
 
             if (jsonStr != null) {
                 try {
@@ -162,7 +165,7 @@ public class clarifications_Fragment extends Fragment{
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
-            final ListView listview = (ListView) rootview.findViewById(R.id.clarificationlist);
+            final ListView listview = (ListView) rootview.findViewById(R.id.clist);
 
             if (clarificatons != null) {
 
@@ -173,10 +176,12 @@ public class clarifications_Fragment extends Fragment{
                         // tmp hashmap for single update
                         HashMap<String, String> clar = new HashMap<String, String>();
 
+                        Log.d("CLAR", clarificatons.getString(i));
                         // adding each child node to HashMap key => value
                         clar.put(TAG_SUBJECT, data.getString(TAG_SUBJECT));
                         clar.put(TAG_USERNAME, "Asked by: " + data.getString(TAG_USERNAME));
 
+                        descriptions.add(data.getString(TAG_DESCRIPTION));
                         clarList.add(clar);
 
                     }catch(JSONException e){
@@ -199,7 +204,12 @@ public class clarifications_Fragment extends Fragment{
             listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
+                    Bundle bundle = new Bundle();
+                    bundle.putString("description", descriptions.get(i));
+                    FragmentManager fm = getFragmentManager();
+                    Fragment frag = new clarifications_description();
+                    frag.setArguments(bundle);
+                    fm.beginTransaction().replace(R.id.container, frag).commit();
                 }
             });
 
