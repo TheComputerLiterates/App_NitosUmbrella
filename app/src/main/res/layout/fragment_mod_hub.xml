@@ -26,30 +26,6 @@
         android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Manage Games"
-        android:id="@+id/mg_button"
-        android:background="@color/umbrella_red"
-        android:layout_alignRight="@+id/mm_button"
-        android:layout_alignLeft="@+id/mm_button"
-
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="275dp"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Manage Missions"
-        android:background="@color/umbrella_red"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        android:id="@+id/mm_button"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="215dp"
-        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -57,33 +33,10 @@
         android:text="GeoFences"
         android:id="@+id/gf_button"
         android:background="@color/umbrella_red"
-        android:layout_alignLeft="@+id/mg_button"
-        android:layout_alignRight="@+id/mg_button"
+        android:layout_marginLeft="75dp"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="155dp"
         android:layout_centerHorizontal="true" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Users"
-        android:id="@+id/u_button"
-        android:background="@color/umbrella_red"
-        android:layout_alignLeft="@+id/mg_button"
-        android:layout_alignRight="@+id/mg_button"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="95dp"
-        android:layout_centerHorizontal="true" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Moderator Chat"
-        android:background="@color/umbrella_red"
-        android:layout_alignLeft="@+id/mg_button"
-        android:layout_alignRight="@+id/mg_button"
-        android:id="@+id/mc_button"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="35dp"
-        android:layout_centerHorizontal="true" />
 </RelativeLayout>
