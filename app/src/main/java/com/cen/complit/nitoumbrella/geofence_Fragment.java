@@ -2,6 +2,7 @@ package com.cen.complit.nitoumbrella;
 
 import android.app.ActionBar;
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
@@ -33,6 +34,9 @@ public class geofence_Fragment extends Fragment {
     Button gSub;
     Double rad, argLat, argLong;
 
+    Bundle mycircle;
+    Fragment myFrag;
+
     private View rootview;
     @Nullable
     @Override
@@ -43,6 +47,10 @@ public class geofence_Fragment extends Fragment {
         myRad.setHint("Radius");
         gSub = new Button(getActivity());
         gSub.setText("Add!");
+        myFrag = null;
+        mycircle = new Bundle();
+        argLat = 0.0;
+        argLong = 0.0;
 
         RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         lp.addRule(RelativeLayout.CENTER_HORIZONTAL);
@@ -63,8 +71,10 @@ public class geofence_Fragment extends Fragment {
             @Override
             public void onMapClick(LatLng point) {
                 mymap.clear();
-                rad = 0.0;
-                rad = Double.parseDouble(myRad.getText().toString());
+                if (myRad.getText().toString().matches(""))
+                    rad = 0.0;
+                else
+                    rad = Double.parseDouble(myRad.getText().toString());
                 argLat = point.latitude;
                 argLong = point.longitude;
                 if (rad != 0.0) {
@@ -81,10 +91,16 @@ public class geofence_Fragment extends Fragment {
         gSub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent newFence = new Intent(getActivity(), geoCircle.class);
-                newFence.putExtra("radius", rad);
-                newFence.putExtra("lat", argLat);
-                newFence.putExtra("long", argLong);
+                mycircle.putDouble("radius", rad);
+                mycircle.putDouble("lat", argLat);
+                mycircle.putDouble("long", argLong);
+                myFrag = new geoCircle();
+                myFrag.setArguments(mycircle);
+
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, myFrag)
+                        .commit();
             }
         });
 

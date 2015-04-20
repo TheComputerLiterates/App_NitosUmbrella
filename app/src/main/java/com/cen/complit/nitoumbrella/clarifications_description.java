@@ -49,5 +49,4 @@ public class clarifications_description extends Fragment {
 
             return rootview;
         }
-
 }

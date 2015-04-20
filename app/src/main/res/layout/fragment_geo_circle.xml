@@ -77,11 +77,12 @@
         android:layout_alignLeft="@+id/textView8"
         android:layout_alignStart="@+id/textView8" />
 
-    <TextView
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Small Text"
+        android:hint="Enter a brief description here"
+        android:textColorHint="@color/pale_blue"
         android:textColor="@color/white"
         android:id="@+id/textView8"
         android:layout_below="@+id/textView7"
@@ -93,26 +94,21 @@
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/gameSpin"
-        android:layout_below="@+id/colorSpin"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <Spinner
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/missionSpin"
-        android:layout_below="@+id/gameSpin"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_below="@+id/gametext"
+        android:layout_margin="20dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignLeft="@+id/button2"
+        android:layout_alignStart="@+id/button2" />
 
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/colorSpin"
-        android:layout_below="@+id/textView8"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp" />
+        android:layout_alignTop="@+id/textView3"
+        android:layout_alignLeft="@+id/missionSpin"
+        android:layout_alignStart="@+id/missionSpin" />
 
     <Button
         android:layout_width="wrap_content"
@@ -126,6 +122,57 @@
         android:layout_alignParentBottom="true"
         android:layout_margin="10dp"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Color:   "
+        android:textColor="@color/white"
+        android:id="@+id/textView3"
+        android:layout_centerVertical="true"
+        android:layout_alignRight="@+id/textView9"
+        android:layout_alignEnd="@+id/textView9" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Mission:   "
+        android:id="@+id/textView9"
+        android:textColor="@color/white"
+        android:layout_alignTop="@+id/missionSpin"
+        android:layout_toLeftOf="@+id/button2"
+        android:layout_toStartOf="@+id/button2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Game: "
+        android:id="@+id/textView10"
+        android:layout_alignTop="@+id/gametext"
+        android:layout_alignBaseline="@+id/gametext"
+        android:textColor="@color/white"
+        android:layout_below="@+id/colorSpin"
+        android:layout_margin="10dp"
+        android:layout_alignRight="@+id/textView9"
+        android:layout_alignEnd="@+id/textView9" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text=""
+        android:id="@+id/gametext"
+        android:textColor="@color/pale_blue"
+        android:layout_below="@+id/colorSpin"
+        android:layout_margin="4dp"
+        android:layout_alignLeft="@+id/colorSpin"
+        android:layout_centerHorizontal="true" />
+        <!--android:layout_alignBottom="@+id/textView10"-->
+        <!--android:layout_alignBaseline="@+id/textView10"-->
+
 
 
 </RelativeLayout>
