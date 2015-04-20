@@ -6,8 +6,40 @@
    <ListView
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-       android:id="@+id/clarlist">
+       android:layout_above="@+id/reply"
+       android:layout_marginBottom="20dp"
+       android:id="@+id/clarlist"
+       >
        </ListView>
-
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/backbutton"
+        android:id="@+id/reply"
+        android:layout_marginBottom="20dp"
+        android:textColor="@color/white"
+        android:hint="Enter Reply Here..."
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/backbutton"
+        android:background="@color/umbrella_red"
+        android:text="Return to Clarifications"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/umbrella_red"
+        android:id="@+id/replybutton"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="30dp"
+        android:text="Reply"
+        android:layout_alignBottom="@id/backbutton"
+        android:layout_toRightOf="@+id/backbutton"
+        android:layout_toEndOf="@+id/backbutton" />
 
 </RelativeLayout>
