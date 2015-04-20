@@ -93,7 +93,7 @@ public class menu1_Fragment extends Fragment{
 
             //Make request to url
             String jsonStr = sh.makeServiceCall(url, ServiceHandler.POST, params);
-            //Log.d("PROFILE", jsonStr);
+            Log.d("PROFILE", jsonStr);
             if (jsonStr != null) {
                 try {
                     JSONObject jsonObject = new JSONObject(jsonStr);

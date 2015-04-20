@@ -39,11 +39,13 @@ public class LoginActivity extends Activity {
     private static String TAG_SUCCESS = "success";
     private static String TAG_BODY = "body";
     private static String TAG_USERID = "userId";
+    private static String TAG_ROLEID = "roleId";
 
     private boolean status;
     private String myusername;
     private String mypassword;
     private String userId;
+    private String roleId;
     public String url = "http://hvz.sabaduy.com/api/" + ServiceHandler.APIKEY + "/login";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,6 +97,7 @@ public class LoginActivity extends Activity {
                 if(status) {
                     JSONObject dataBody = jsonObject.getJSONObject(TAG_BODY);
                     userId = dataBody.getString(TAG_USERID);
+                    roleId = dataBody.getString(TAG_ROLEID);
                 }
 
             } catch (JSONException e) {
@@ -113,7 +116,7 @@ public class LoginActivity extends Activity {
             if(status) {
                 String filename = "session";
 
-                String mylogin = myusername + ";" + mypassword + ";" + userId;
+                String mylogin = myusername + ";" + mypassword + ";" + userId + ";" + roleId;
 
                 try {
                     outputStream = openFileOutput(filename, Context.MODE_PRIVATE);

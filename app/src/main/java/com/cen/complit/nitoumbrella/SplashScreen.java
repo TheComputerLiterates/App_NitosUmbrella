@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -18,7 +19,8 @@ import java.io.IOException;
 public class SplashScreen extends Activity {
 
     private static int TIME_OUT = 3000;
-
+    private boolean isAdmin = false;
+    private boolean myTest = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,13 +33,14 @@ public class SplashScreen extends Activity {
             @Override
             public void run() {
                 //if file exists and contains proper credentials, go to main
-                boolean myflag = false, isAdmin = false;
+
                 String myusername, mypassword, mylogin;
                 String logindata;
                 String filename = "session";
                 File myFile = new File(getApplicationContext().getFilesDir(), filename);
                 if (myFile.exists()) {
                     FileInputStream inputStream;
+                    myTest = true;
                     try {
                         inputStream = openFileInput(filename);
                         byte[] login_test = new byte[inputStream.available()];
@@ -47,9 +50,10 @@ public class SplashScreen extends Activity {
                         //myusername = separated[0];
                         //mypassword = separated[1];
 
-
-
-                        isAdmin = true;
+                        Log.d("RoleID", separated[3]);
+                        if(separated[3].equals("5")) {
+                            isAdmin = true;
+                        }
 
 
 
@@ -57,13 +61,13 @@ public class SplashScreen extends Activity {
                         e.printStackTrace();
                         Toast.makeText(getApplicationContext(), "FML", Toast.LENGTH_LONG).show();
                     } catch (IOException e) {
-
+                        e.printStackTrace();
                     }
 
 
                 }
                 //else go to Login
-                if (isAdmin)
+                if (myTest)
                 {
                     Intent i = new Intent(SplashScreen.this, MainActivity.class);
                     i.putExtra("rank", isAdmin);

@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +22,7 @@ public class clarifications_description extends Fragment {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             rootview = inflater.inflate(R.layout.c_layout, container, false);
-            Bundle bundle = getArguments();
+            final Bundle bundle = getArguments();
             String durr = bundle.getString("description");
             String chungis = bundle.getString("closed");
             String dumbo = bundle.getString("replies");
@@ -44,6 +45,22 @@ public class clarifications_description extends Fragment {
                     FragmentManager fm = getFragmentManager();
                     Fragment frag = new clarifications_Fragment();
                     fm.beginTransaction().replace(R.id.container, frag).commit();
+                }
+            });
+
+            Button dammit = (Button) rootview.findViewById(R.id.commentbutton);
+            dammit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Bundle comment = new Bundle();
+                    String shit = bundle.getString("crId");
+                    //Log.d("PLACING IN BUNDLE", shit);
+                    comment.putString("durr", shit);
+                    FragmentManager fm = getFragmentManager();
+                    Fragment frig = new clarifications_comments();
+                    frig.setArguments(comment);
+                    fm.beginTransaction().replace(R.id.container, frig).commit();
+
                 }
             });
 
