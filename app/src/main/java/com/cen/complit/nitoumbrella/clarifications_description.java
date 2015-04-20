@@ -23,8 +23,19 @@ public class clarifications_description extends Fragment {
             rootview = inflater.inflate(R.layout.c_layout, container, false);
             Bundle bundle = getArguments();
             String durr = bundle.getString("description");
+            String chungis = bundle.getString("closed");
+            String dumbo = bundle.getString("replies");
             TextView tv = (TextView) rootview.findViewById(R.id.textView);
+            TextView stat = (TextView)rootview.findViewById(R.id.editstatus);
+            TextView rep = (TextView)rootview.findViewById(R.id.numReplies);
             tv.setText(durr);
+            rep.setText(dumbo);
+            if(chungis.equals("true")){
+                stat.setText("Closed");
+            }
+            else
+                stat.setText("Open");
+
 
             Button hurr = (Button) rootview.findViewById(R.id.returnbutton);
             hurr.setOnClickListener(new View.OnClickListener() {

@@ -47,6 +47,8 @@ public class clarifications_Fragment extends Fragment{
     private static String TAG_USERNAME = "userName";
     private static String TAG_SUBJECT = "subject";
     private static String TAG_DESCRIPTION = "description";
+    private static String TAG_REPLIES = "replies";
+    private static String TAG_CLOSED = "closed";
     private boolean status = false;
     private String id,
             role,
@@ -55,6 +57,8 @@ public class clarifications_Fragment extends Fragment{
     private JSONArray clarificatons;
     private ArrayList<HashMap<String, String>> clarList = new ArrayList<HashMap<String, String>>();
     private ArrayList<String> descriptions = new ArrayList<String>();
+    private ArrayList<String> replies = new ArrayList<String>();
+    private ArrayList<String> open = new ArrayList<String>();
 
     View rootview;
     @Nullable
@@ -182,6 +186,8 @@ public class clarifications_Fragment extends Fragment{
                         clar.put(TAG_USERNAME, "Asked by: " + data.getString(TAG_USERNAME));
 
                         descriptions.add(data.getString(TAG_DESCRIPTION));
+                        replies.add(data.getString(TAG_REPLIES));
+                        open.add(data.getString(TAG_CLOSED));
                         clarList.add(clar);
 
                     }catch(JSONException e){
@@ -206,6 +212,8 @@ public class clarifications_Fragment extends Fragment{
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                     Bundle bundle = new Bundle();
                     bundle.putString("description", descriptions.get(i));
+                    bundle.putString("replies", replies.get(i));
+                    bundle.putString("closed", open.get(i));
                     FragmentManager fm = getFragmentManager();
                     Fragment frag = new clarifications_description();
                     frag.setArguments(bundle);

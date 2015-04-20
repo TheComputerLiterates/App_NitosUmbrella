@@ -6,7 +6,7 @@
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_above="@+id/returnbutton">
+        android:layout_above="@+id/status">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -19,15 +19,75 @@
             />
     </ScrollView>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/replies"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/status"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/pale_blue"
+        android:text="Status: "
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/status"
+        android:layout_toEndOf="@+id/status"
+        android:layout_alignBottom="@+id/status"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:text="Loading..."
+        android:id="@+id/editstatus"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_above="@+id/returnbutton"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="30dp"
+        android:id="@+id/replies"
+        android:textColor="@color/pale_blue"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:text="Replies: "
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/replies"
+        android:layout_toRightOf="@+id/replies"
+        android:layout_alignBottom="@+id/replies"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:text="Loading..."
+        android:id="@+id/numReplies"
+        />
+
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/returnbutton"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="30dp"
-        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp"
         android:background="@color/umbrella_red"
-        android:text="Return to Clarifications"
+        android:text="Back"
 
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/commentbutton"
+        android:layout_toEndOf="@+id/returnbutton"
+        android:layout_toRightOf="@+id/returnbutton"
+        android:layout_alignBottom="@+id/returnbutton"
+        android:background="@color/umbrella_red"
+        android:layout_marginLeft="10dp"
+        android:text="Read Replies"
         />
 </RelativeLayout>
