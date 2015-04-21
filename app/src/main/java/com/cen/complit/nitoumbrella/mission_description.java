@@ -34,6 +34,8 @@ public class mission_description extends Fragment {
             }
         });
 
+
+
         return rootview;
     }
 

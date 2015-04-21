@@ -25,11 +25,11 @@ public class modHub_Fragment extends Fragment implements View.OnClickListener{
         final Boolean isAdmin = this.getArguments().getBoolean("modStatus");
         rootview = inflater.inflate(R.layout.fragment_mod_hub, container, false);
         final Switch mySwitch = (Switch) rootview.findViewById(R.id.rekt_switch);
-        Button mg = (Button) rootview.findViewById(R.id.mg_button);
-        Button mm = (Button) rootview.findViewById(R.id.mm_button);
+        //Button mg = (Button) rootview.findViewById(R.id.mg_button);
+        //Button mm = (Button) rootview.findViewById(R.id.mm_button);
         Button gf = (Button) rootview.findViewById(R.id.gf_button);
-        Button us = (Button) rootview.findViewById(R.id.u_button);
-        Button mc = (Button) rootview.findViewById(R.id.mc_button);
+        //Button us = (Button) rootview.findViewById(R.id.u_button);
+        //Button mc = (Button) rootview.findViewById(R.id.mc_button);
         final TextView mySarc = (TextView) rootview.findViewById(R.id.sarcText);
 
         mySwitch.setTextOn("Mod");
@@ -39,11 +39,11 @@ public class modHub_Fragment extends Fragment implements View.OnClickListener{
         if(!isAdmin)
         {
             mySarc.setText("You don't look like a Mod to me, pal.");
-            mg.setVisibility(View.GONE);
-            mm.setVisibility(View.GONE);
+            //mg.setVisibility(View.GONE);
+            //mm.setVisibility(View.GONE);
             gf.setVisibility(View.GONE);
-            us.setVisibility(View.GONE);
-            mc.setVisibility(View.GONE);
+            //us.setVisibility(View.GONE);
+            //mc.setVisibility(View.GONE);
         }
 
         mySwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -63,11 +63,11 @@ public class modHub_Fragment extends Fragment implements View.OnClickListener{
             }
         });
 
-        mg.setOnClickListener(this);
-        mm.setOnClickListener(this);
+        //mg.setOnClickListener(this);
+        //mm.setOnClickListener(this);
         gf.setOnClickListener(this);
-        us.setOnClickListener(this);
-        mc.setOnClickListener(this);
+        //us.setOnClickListener(this);
+        //mc.setOnClickListener(this);
 
         return rootview;
 
@@ -79,21 +79,21 @@ public class modHub_Fragment extends Fragment implements View.OnClickListener{
         FragmentManager fm = getFragmentManager();
         Fragment myFr = null;
         switch (view.getId()){
-            case R.id.mg_button:
-                 myFr = new manageGames_Fragment();
-                 break;
-            case R.id.mm_button:
-                myFr = new manageMissions_Fragment();
-                break;
+            //case R.id.mg_button:
+                // myFr = new manageGames_Fragment();
+                 //break;
+            //case R.id.mm_button:
+               // myFr = new manageMissions_Fragment();
+                //break;
             case R.id.gf_button:
                 myFr = new geofence_Fragment();
                 break;
-            case R.id.u_button:
-                myFr = new users_Fragment();
-                break;
-            case R.id.mc_button:
-                myFr = new modChat_Fragment();
-                break;
+            //case R.id.u_button:
+              //  myFr = new users_Fragment();
+                //break;
+            //case R.id.mc_button:
+              //  myFr = new modChat_Fragment();
+              //  break;
         }
         fm.beginTransaction().replace(R.id.container, myFr).commit();
     }

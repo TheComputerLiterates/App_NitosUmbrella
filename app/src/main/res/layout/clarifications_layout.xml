@@ -6,6 +6,19 @@
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/newPostButton"
+        android:layout_marginBottom="20dp"
         android:id="@+id/clist"
         ></ListView>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/newPostButton"
+        android:background="@color/umbrella_red"
+        android:text="Post Request"
+        android:layout_centerInParent="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
+        />
 </RelativeLayout>

@@ -3,11 +3,11 @@
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:background="@color/coffee">
 
-    <ListView
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/listview"
-
-        ></ListView>
+        android:textColor="@color/pale_blue"
+        android:text="Coming to an Android device to you soon!"
+        />
 
 </RelativeLayout>

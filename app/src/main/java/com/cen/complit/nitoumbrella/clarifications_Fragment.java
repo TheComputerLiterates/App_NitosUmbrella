@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -55,6 +56,7 @@ public class clarifications_Fragment extends Fragment{
             role,
             logindata;
 
+
     private JSONArray clarificatons;
     private ArrayList<HashMap<String, String>> clarList = new ArrayList<HashMap<String, String>>();
     private ArrayList<String> descriptions = new ArrayList<String>();
@@ -91,6 +93,17 @@ public class clarifications_Fragment extends Fragment{
 
 
         new GetRoleId().execute();
+
+        Button button = (Button)rootview.findViewById(R.id.newPostButton);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fm = getFragmentManager();
+                Fragment frag = new users_Fragment();
+                fm.beginTransaction().replace(R.id.container,frag).commit();
+            }
+        });
+
 
         return rootview;
     }
