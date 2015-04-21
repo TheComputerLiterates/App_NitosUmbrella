@@ -99,7 +99,6 @@ public class LoginActivity extends Activity {
                     userId = dataBody.getString(TAG_USERID);
                     roleId = dataBody.getString(TAG_ROLEID);
                 }
-
             } catch (JSONException e) {
                 e.printStackTrace();
             }

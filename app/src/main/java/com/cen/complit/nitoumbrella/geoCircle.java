@@ -60,12 +60,15 @@ public class geoCircle extends  Fragment {
     private String TAG_ROLEID = "roleId";
     private String TAG_MISSIONDATA = "missionData";
     public String url = "http://hvz.sabaduy.com/api/" + ServiceHandler.APIKEY + "/game";
+    public String passurl = "http://hvz.jrdbnntt.com/api/" + ServiceHandler.APIKEY + "/map/create/geofence";
 
     private String id,
             roleId = "5",
-            title;
+            title,
+            mygameId,
+            mymissionId;
 
-    private Double hMod, zMod, ozMod;
+    private String hMod, zMod, ozMod;
 
     private boolean status;
 
@@ -74,7 +77,10 @@ public class geoCircle extends  Fragment {
     private ArrayList<String> myList = new ArrayList<String>();
     TextView gameText;
 
-    Spinner mSpinner;
+    Spinner mSpinner, colorSpinner;
+
+    EditText modifHUM, modifZOM, modifOZ, desText;
+    CheckBox cbHuman, cbOZ, cbZombie;
 
 
     @Nullable
@@ -85,17 +91,37 @@ public class geoCircle extends  Fragment {
         myLat = this.getArguments().getDouble("lat");
         myLong = this.getArguments().getDouble("long");
         myList = new ArrayList<String>();
+        Button b = (Button) rootview.findViewById(R.id.button2);
+
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle myArgs = new Bundle();
+                myArgs.putBoolean("modStatus", true);
+                new SendCircle().execute();
+
+                Toast.makeText(getActivity(), "GeoFence Added", Toast.LENGTH_LONG).show();
+
+                Fragment myFrag = new modHub_Fragment();
+                myFrag.setArguments(myArgs);
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, myFrag)
+                        .commit();
+            }
+        });
 
         affHuman = false;
         affOZ = false;
         affZombie = false;
-        hMod = 0.0;
-        zMod = 0.0;
-        ozMod = 0.0;
+//        hMod = 0.0;
+//        zMod = 0.0;
+//        ozMod = 0.0;
+
 
         gameText = (TextView) rootview.findViewById(R.id.gametext);
 
-        Spinner colorSpinner = (Spinner) rootview.findViewById(R.id.colorSpin);
+        colorSpinner = (Spinner) rootview.findViewById(R.id.colorSpin);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
                 R.array.colors_array, R.layout.custom_spinner);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -103,14 +129,15 @@ public class geoCircle extends  Fragment {
 
         mSpinner  = (Spinner) rootview.findViewById(R.id.missionSpin);
 
-        EditText modifHUM = (EditText) rootview.findViewById(R.id.hMod);
-        EditText modifZOM = (EditText) rootview.findViewById(R.id.zomMod);
-        EditText modifOZ = (EditText) rootview.findViewById(R.id.ozMod);
+        modifHUM = (EditText) rootview.findViewById(R.id.hMod);
+        modifZOM = (EditText) rootview.findViewById(R.id.zomMod);
+        modifOZ = (EditText) rootview.findViewById(R.id.ozMod);
+        desText = (EditText) rootview.findViewById(R.id.textView8);
 
 
-        final CheckBox cbHuman = (CheckBox) rootview.findViewById(R.id.checkHumans);
-        final CheckBox cbOZ = (CheckBox) rootview.findViewById(R.id.checkOZ);
-        final CheckBox cbZombie = (CheckBox) rootview.findViewById(R.id.checkZombies);
+        cbHuman = (CheckBox) rootview.findViewById(R.id.checkHumans);
+        cbOZ = (CheckBox) rootview.findViewById(R.id.checkOZ);
+        cbZombie = (CheckBox) rootview.findViewById(R.id.checkZombies);
 
         cbHuman.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,6 +150,8 @@ public class geoCircle extends  Fragment {
                     cbHuman.setChecked(false);
                     affHuman = true;
                 }
+
+
             }
         });
 
@@ -137,6 +166,8 @@ public class geoCircle extends  Fragment {
                     cbZombie.setChecked(false);
                     affZombie = true;
                 }
+
+
             }
         });
 
@@ -151,15 +182,11 @@ public class geoCircle extends  Fragment {
                     cbOZ.setChecked(false);
                     affOZ = true;
                 }
+
+
             }
         });
 
-        if (modifHUM.getText() != null)
-            hMod = Double.parseDouble(modifHUM.getText().toString());
-        if (modifZOM.getText() != null)
-            hMod = Double.parseDouble(modifZOM.getText().toString());
-        if (modifOZ.getText() != null)
-            hMod = Double.parseDouble(modifOZ.getText().toString());
 
         new GetGame().execute();
         return rootview;
@@ -186,6 +213,7 @@ public class geoCircle extends  Fragment {
                         missions = body.getJSONArray(TAG_MISSIONDATA);
                         JSONObject games = body.getJSONObject("gameData");
                         title = games.getString(TAG_TITLE);
+                        mygameId = games.getString("gameId");
                         Log.d("myTITLE", title);
                         Log.d("WHADAFUCK", missions.toString());
                     }
@@ -219,6 +247,7 @@ public class geoCircle extends  Fragment {
                         myList.add(data.getString(TAG_TITLE));
                         Log.d("TITLES", data.getString(TAG_TITLE));
 
+                        mymissionId = data.getString("missionId");
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -237,6 +266,72 @@ public class geoCircle extends  Fragment {
                     R.layout.custom_spinner, myList);
 
             mSpinner.setAdapter(myAdapter);
+        }
+    }
+
+    private class SendCircle extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected Void doInBackground(Void... arg0) {
+            List<NameValuePair> params = new ArrayList<NameValuePair>();
+
+            //create service handler
+            ServiceHandler sh = new ServiceHandler();
+            String myHuman, myOZ, myZombie;
+
+            if (cbHuman.isChecked())
+                myHuman = modifHUM.getText().toString();
+            else
+                myHuman = "0";
+            if (cbZombie.isChecked())
+                myZombie = modifZOM.getText().toString();
+            else
+                myZombie = "0";
+            if (cbOZ.isChecked())
+                myOZ = modifOZ.getText().toString();
+            else
+                myOZ = "0";
+
+            String mycolor = colorSpinner.getSelectedItem().toString();
+
+            if (mycolor.matches("Pale Blue"))
+                mycolor = "0x9CBEBD";
+            else if (mycolor.matches("Brown"))
+                mycolor = "2E2B21";
+            else if (mycolor.matches("White"))
+                mycolor = "0xFFFFFF";
+            else
+                mycolor = "0xC1272D";
+
+
+            params.add(new BasicNameValuePair("gameId", mygameId));
+            params.add(new BasicNameValuePair("missionId", mymissionId));
+            params.add(new BasicNameValuePair("human", myHuman));
+            params.add(new BasicNameValuePair("zombie", myZombie));
+            params.add(new BasicNameValuePair("oz", myOZ));
+            params.add(new BasicNameValuePair("color", mycolor));
+            params.add(new BasicNameValuePair("latitude", myLat.toString()));
+            params.add(new BasicNameValuePair("longitude", myLong.toString()));
+            params.add(new BasicNameValuePair("radius", radius.toString()));
+            params.add(new BasicNameValuePair("description", desText.getText().toString()));
+
+
+
+            //Make request to url
+
+            String jsonStr = sh.makeServiceCall(passurl, ServiceHandler.POST, params);
+
+            //Log.d("DATA", jsonStr);
+
+            try {
+                JSONObject jsonObject = new JSONObject(jsonStr);
+                status = jsonObject.getBoolean(TAG_SUCCESS);
+                if(status) {
+                    JSONObject dataBody = jsonObject.getJSONObject(TAG_BODY);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            return null;
         }
     }
 }
