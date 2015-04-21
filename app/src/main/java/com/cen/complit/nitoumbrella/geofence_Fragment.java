@@ -53,12 +53,6 @@ public class geofence_Fragment extends Fragment {
         argLat = 0.0;
         argLong = 0.0;
 
-//        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-//        lp.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
-//        lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
-//        gSub.setLayoutParams(lp);
-//        getActivity().addContentView(gSub, lp);
-//        getActivity().addContentView(myRad, new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
         mapView = (MapView) rootview.findViewById(R.id.map);
         mapView.onCreate(savedInstanceState);

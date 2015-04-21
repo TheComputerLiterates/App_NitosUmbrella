@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -62,11 +63,9 @@ public class geoCircle extends  Fragment {
 
     private String id,
             roleId = "5",
-            title,
-            start,
-            end,
-            description,
-            logindata;
+            title;
+
+    private Double hMod, zMod, ozMod;
 
     private boolean status;
 
@@ -90,6 +89,9 @@ public class geoCircle extends  Fragment {
         affHuman = false;
         affOZ = false;
         affZombie = false;
+        hMod = 0.0;
+        zMod = 0.0;
+        ozMod = 0.0;
 
         gameText = (TextView) rootview.findViewById(R.id.gametext);
 
@@ -100,6 +102,11 @@ public class geoCircle extends  Fragment {
         colorSpinner.setAdapter(adapter);
 
         mSpinner  = (Spinner) rootview.findViewById(R.id.missionSpin);
+
+        EditText modifHUM = (EditText) rootview.findViewById(R.id.hMod);
+        EditText modifZOM = (EditText) rootview.findViewById(R.id.zomMod);
+        EditText modifOZ = (EditText) rootview.findViewById(R.id.ozMod);
+
 
         final CheckBox cbHuman = (CheckBox) rootview.findViewById(R.id.checkHumans);
         final CheckBox cbOZ = (CheckBox) rootview.findViewById(R.id.checkOZ);
@@ -146,6 +153,13 @@ public class geoCircle extends  Fragment {
                 }
             }
         });
+
+        if (modifHUM.getText() != null)
+            hMod = Double.parseDouble(modifHUM.getText().toString());
+        if (modifZOM.getText() != null)
+            hMod = Double.parseDouble(modifZOM.getText().toString());
+        if (modifOZ.getText() != null)
+            hMod = Double.parseDouble(modifOZ.getText().toString());
 
         new GetGame().execute();
         return rootview;

@@ -20,14 +20,11 @@
         android:layout_height="wrap_content"
         android:text="Humans"
         android:onClick="onCheckboxClicked"
-        android:layout_marginTop="58dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="61dp"
-        android:layout_marginEnd="61dp"
+        android:layout_marginTop="47dp"
         android:textColor="@color/white"
-        />
+        android:layout_alignTop="@+id/textView"
+        android:layout_alignLeft="@+id/checkZombies"
+        android:layout_alignStart="@+id/checkZombies" />
 
 
     <CheckBox android:id="@+id/checkZombies"
@@ -35,22 +32,19 @@
         android:layout_height="wrap_content"
         android:text="Zombies"
         android:onClick="onCheckboxClicked"
-        android:layout_below="@+id/checkHumans"
-        android:layout_alignLeft="@+id/checkHumans"
-        android:layout_alignStart="@+id/checkHumans"
         android:textColor="@color/white"
-        />
+        android:layout_alignTop="@+id/rolesAffected"
+        android:layout_alignLeft="@+id/checkOZ"
+        android:layout_alignStart="@+id/checkOZ" />
 
     <CheckBox android:id="@+id/checkOZ"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="OZ"
         android:onClick="onCheckboxClicked"
-        android:layout_below="@+id/checkZombies"
-        android:layout_alignLeft="@+id/checkZombies"
-        android:layout_alignStart="@+id/checkZombies"
         android:textColor="@color/white"
-        />
+        android:layout_below="@+id/checkZombies"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -60,10 +54,8 @@
         android:textColor="@color/white"
         android:id="@+id/rolesAffected"
         android:layout_below="@+id/checkHumans"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="36dp"
-        android:layout_marginStart="36dp" />
+        android:layout_alignRight="@+id/textView10"
+        android:layout_alignEnd="@+id/textView10" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -170,7 +162,45 @@
         android:layout_margin="4dp"
         android:layout_alignLeft="@+id/colorSpin"
         android:layout_centerHorizontal="true" />
-        <!--android:layout_alignBottom="@+id/textView10"-->
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:hint="Modifier"
+        android:id="@+id/hMod"
+        android:textColorHint="@color/pale_blue"
+        android:layout_alignBottom="@+id/checkHumans"
+        android:layout_toRightOf="@+id/textView"
+        android:layout_toEndOf="@+id/textView"
+        android:layout_alignTop="@+id/checkHumans"
+        android:paddingTop="7dp"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:hint="Modifier"
+        android:id="@+id/zomMod"
+        android:textColorHint="@color/pale_blue"
+        android:layout_alignLeft="@+id/hMod"
+        android:layout_alignStart="@+id/hMod"
+        android:layout_alignBottom="@+id/checkZombies"
+        android:paddingBottom="7dp"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:hint="Modifier"
+        android:id="@+id/ozMod"
+        android:textColorHint="@color/pale_blue"
+        android:layout_alignLeft="@+id/hMod"
+        android:layout_alignStart="@+id/zomMod"
+        android:layout_below="@+id/zomMod"
+        android:layout_alignBottom="@+id/checkOZ"
+        android:paddingTop="7dp"/>
+    <!--android:layout_alignBottom="@+id/textView10"-->
         <!--android:layout_alignBaseline="@+id/textView10"-->
 
 
