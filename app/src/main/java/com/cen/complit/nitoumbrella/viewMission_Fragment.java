@@ -39,8 +39,8 @@ import java.util.List;
  * Created by Andrew on 1/28/2015.
  */
 public class viewMission_Fragment extends Fragment {
-    public String purl = "http://hvz.sabaduy.com/api/" + ServiceHandler.APIKEY + "/user/profile";
-    public String url = "http://hvz.sabaduy.com/api/" + ServiceHandler.APIKEY + "/game";
+    public String purl = ServiceHandler.URL + ServiceHandler.APIKEY + "/user/profile";
+    public String url = ServiceHandler.URL + ServiceHandler.APIKEY + "/game";
     private String TAG_SUCCESS = "success";
     private String TAG_BODY = "body";
     private String TAG_ROLEID = "roleId";

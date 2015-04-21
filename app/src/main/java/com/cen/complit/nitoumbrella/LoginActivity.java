@@ -46,7 +46,7 @@ public class LoginActivity extends Activity {
     private String mypassword;
     private String userId;
     private String roleId;
-    public String url = "http://hvz.sabaduy.com/api/" + ServiceHandler.APIKEY + "/login";
+    public String url = ServiceHandler.URL + ServiceHandler.APIKEY + "/login";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

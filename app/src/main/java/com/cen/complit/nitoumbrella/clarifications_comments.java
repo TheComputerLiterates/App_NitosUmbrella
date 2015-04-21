@@ -36,8 +36,8 @@ import java.util.List;
 public class clarifications_comments extends Fragment {
     View rootview;
     Bundle chungis = new Bundle();
-    public String url = "http://hvz.sabaduy.com/api/" + ServiceHandler.APIKEY + "/user/cRequestView_commentGet";
-    public String curl = "http://hvz.sabaduy.com/api/" + ServiceHandler.APIKEY + "/user/cRequestView_commentCreate";
+    public String url = ServiceHandler.URL + ServiceHandler.APIKEY + "/user/cRequestView_commentGet";
+    public String curl = ServiceHandler.URL + ServiceHandler.APIKEY + "/user/cRequestView_commentCreate";
 
 
     final private String TAG_SUCCESS = "success";

@@ -59,8 +59,8 @@ public class geoCircle extends  Fragment {
     private String TAG_BODY = "body";
     private String TAG_ROLEID = "roleId";
     private String TAG_MISSIONDATA = "missionData";
-    public String url = "http://hvz.sabaduy.com/api/" + ServiceHandler.APIKEY + "/game";
-    public String passurl = "http://hvz.jrdbnntt.com/api/" + ServiceHandler.APIKEY + "/map/create/geofence";
+    public String url =ServiceHandler.URL + ServiceHandler.APIKEY + "/game";
+    public String passurl = ServiceHandler.URL + ServiceHandler.APIKEY + "/map/create/geofence";
 
     private String id,
             roleId = "5",

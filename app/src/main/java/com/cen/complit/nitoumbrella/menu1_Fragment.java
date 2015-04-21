@@ -35,7 +35,7 @@ public class menu1_Fragment extends Fragment{
     View rootview;
 
     // url to make request
-    public String url = "http://hvz.sabaduy.com/api/" + ServiceHandler.APIKEY + "/user/profile";
+    public String url = ServiceHandler.URL + ServiceHandler.APIKEY + "/user/profile";
     private static String TAG_SUCCESS = "success";
     private static String TAG_BODY = "body";
     private static String TAG_FIRST = "firstName";

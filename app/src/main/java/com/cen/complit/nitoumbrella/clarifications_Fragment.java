@@ -35,8 +35,8 @@ import java.util.List;
  */
 public class clarifications_Fragment extends Fragment{
 
-    public String purl = "http://hvz.sabaduy.com/api/" + ServiceHandler.APIKEY + "/user/profile";
-    public String url = "http://hvz.sabaduy.com/api/" + ServiceHandler.APIKEY + "/user/cRequestView";
+    public String purl = ServiceHandler.URL + ServiceHandler.APIKEY + "/user/profile";
+    public String url = ServiceHandler.URL + ServiceHandler.APIKEY + "/user/cRequestView";
     //Accepts roleId, userId
     //-body-cRequests
     //cRequests in a JSONArray

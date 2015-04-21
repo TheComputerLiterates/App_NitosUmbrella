@@ -36,7 +36,7 @@ public class gpsService extends Service {
             ACTION_LOCATION_BROADCAST = gpsService.class.getName() + "LocationBroadcast",
             EXTRA_LATITUDE = "extra_latitude",
             EXTRA_LONGITUDE = "extra_longitude",
-            url = "http://hvz.jrdbnntt.com/api/" + ServiceHandler.APIKEY + "/map/userGeopointCreate";
+            url = ServiceHandler.URL + ServiceHandler.APIKEY + "/map/userGeopointCreate";
 
     private static final int
             MIN_TIME = 2000,

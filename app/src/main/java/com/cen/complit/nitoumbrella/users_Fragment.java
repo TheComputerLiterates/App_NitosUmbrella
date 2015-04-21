@@ -30,7 +30,7 @@ import java.util.List;
  * Created by Andrew on 1/28/2015.
  */
 public class users_Fragment extends Fragment{
-    public String url = "http://hvz.sabaduy.com/api/" + ServiceHandler.APIKEY + "/user/cRequestCreate_submit";
+    public String url = ServiceHandler.URL + ServiceHandler.APIKEY + "/user/cRequestCreate_submit";
 
     private String id,
     logindata;

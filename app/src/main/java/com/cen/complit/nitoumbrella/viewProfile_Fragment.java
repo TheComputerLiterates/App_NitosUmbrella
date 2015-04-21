@@ -30,7 +30,7 @@ import java.util.List;
 
 public class viewProfile_Fragment extends Fragment{
 
-    public String url = "http://hvz.sabaduy.com/api/" + ServiceHandler.APIKEY + "/user/profile";
+    public String url = ServiceHandler.URL + ServiceHandler.APIKEY + "/user/profile";
     private static String TAG_SUCCESS = "success";
     private static String TAG_BODY = "body";
     private static String TAG_FIRST = "firstName";

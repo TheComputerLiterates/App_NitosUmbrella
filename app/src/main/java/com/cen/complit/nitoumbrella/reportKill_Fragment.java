@@ -29,7 +29,7 @@ import java.util.List;
  */
 
 public class reportKill_Fragment extends Fragment{
-    public String url = "http://hvz.sabaduy.com/api/" + ServiceHandler.APIKEY + "/game/kill";
+    public String url = ServiceHandler.URL + ServiceHandler.APIKEY + "/game/kill";
     private String id,
     logindata;
 
