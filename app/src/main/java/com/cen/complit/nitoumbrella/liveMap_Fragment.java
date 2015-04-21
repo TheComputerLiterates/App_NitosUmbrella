@@ -107,12 +107,12 @@ public class liveMap_Fragment extends Fragment{
 
         mymap.addCircle(new CircleOptions()
                         .center(UNION)
-                        .radius(20)
-                        .fillColor(0x40C1272D)
+                        .radius(50)
+                        .fillColor(0x409CBEBD)
                         .strokeColor(0x2e2b21)
         );
         mymap.addCircle(new CircleOptions()
-                        .center(UNION2)
+                        .center(LANDIS)
                         .radius(20)
                         .fillColor(0x40C1272D)
                         .strokeColor(0x2e2b21)
