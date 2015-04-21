@@ -73,8 +73,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/returnbutton"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="30dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginBottom="30dp"
         android:background="@color/umbrella_red"
         android:text="Back"
 
@@ -85,9 +85,10 @@
         android:id="@+id/commentbutton"
         android:layout_toEndOf="@+id/returnbutton"
         android:layout_toRightOf="@+id/returnbutton"
-        android:layout_alignBottom="@+id/returnbutton"
+        android:layout_alignParentBottom="true"
         android:background="@color/umbrella_red"
         android:layout_marginLeft="10dp"
+        android:layout_marginBottom="30dp"
         android:text="Read Replies"
         />
 </RelativeLayout>

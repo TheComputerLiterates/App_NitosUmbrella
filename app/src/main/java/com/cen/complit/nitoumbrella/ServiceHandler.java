@@ -23,7 +23,7 @@ public class ServiceHandler {
     public final static int GET = 1;
     public final static int POST = 2;
     public final static String APIKEY = "ZTPDcCdzezkcdrMhbWPuaBJYqKKMDy63K9pJrfHpQCsnRG7vbc82skUYvcFq343XypfGTZ9eVzvUhBWCP4RWTmBwKuGG2WW8wc2T7Zwfv3AYHZbaxRb56whsRVJGpR6re845Jkht5W36A9CpzzF3UTJMXtNEPKQ4aq5vTpW3Cw2GF45nS97hVu34x4dTwGFBnK5sGXVVWZDEcsJ4XAw4KyFAryVwUFLRE8ub7Lnp2PgAa7Zqd54aC59kkkc6SZKE";
-
+    public final static String URL = "http://fsuhvz.com/api";
     public ServiceHandler(){
 
     }
